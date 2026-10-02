@@ -2,13 +2,15 @@ CC = c++
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = megaphone.cpp
+SRC = PhoneBook.cpp main.cpp
 
-NAME = megaphone
+HDR = PhoneBook.hpp
+
+NAME = PhoneBook
 
 all: $(NAME)
 
-$(NAME): $(SRC)
+$(NAME): $(SRC) $(HDR)
 	@$(CC) $(FLAGS) $(SRC) -o $(NAME)
 
 clean:
