@@ -2,11 +2,11 @@ CC = c++
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = PhoneBook.cpp Contact.cpp main.cpp
+SRC = Test.cpp main.cpp
 
-HDR = PhoneBook.hpp
+HDR = Test.hpp
 
-NAME = PhoneBook
+NAME = Test
 
 all: $(NAME)
 

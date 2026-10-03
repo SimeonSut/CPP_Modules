@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 13:39:50 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/02 21:58:36 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/03 17:27:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 # define PHONEBOOK_HPP
 
 #include <iostream>
+#include <iomanip>
 
 class Contact
 {
 	public:
 		Contact();
 		~Contact();
+		int	set( void );
+		void get( int index );
 	private:
-		std::string	first_name;
-		std::string last_name;
-		std::string nickname;
-		std::string phone_number;
-		std::string darkest_secret;
+		std::string	data[5];
 };
 
 class PhoneBook
@@ -33,11 +32,20 @@ class PhoneBook
 	public:
 		PhoneBook();
 		~PhoneBook();
-		void ADD ( void );
-		void SEARCH ( void );
-		void EXIT ( void );
+		void add ( void );
+		void search ( int index );
 	private:
-		Contact Contact[9];
+		class Contact Contacts[9];
+		int index;
+};
+
+enum contacts_info
+{
+	FIRST_NAME = 0,
+	LAST_NAME,
+	NICKNAME,
+	PHONE_NUMBER,
+	DARKEST_SECRET
 };
 
 #endif

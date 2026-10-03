@@ -3,34 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 13:42:40 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/02 21:54:29 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/03 17:30:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(void)
-{}
+{
+	PhoneBook::index = 0;
+}
 
 PhoneBook::~PhoneBook(void)
 {}
 
-Contact::Contact(void)
+void PhoneBook::add(void)
 {
-	std::cout << "input first name" << std::endl;
-	std::cin >> this->first_name;
-	std::cout << "input last name" << std::endl;
-    std::cin >> this->last_name;
-    std::cout << "input nickname" << std::endl;
-    std::cin >> this->nickname;
-	std::cout << "input phone number" << std::endl;
-    std::cin >> this->phone_number;
-    std::cout << "input darkest_secret" << std::endl;
-    std::cin >> this->darkest_secret;
+	Contact	contact;
+
+	if (contact.set() == 1)
+		return ;
+	if (PhoneBook::index > 8)
+		PhoneBook::index = 0;
+	PhoneBook::Contacts[PhoneBook::index] = contact;
+	PhoneBook::index++;
+	return ;
 }
 
-Contact::~Contact(void)
-{}
+void PhoneBook::search(int index)
+{
+	if (index < 0 || index > 8)
+	{
+		std::cout << "Invalid input!" << std::endl;
+		return ;
+	}
+	PhoneBook::Contacts[index].get(index);
+}
