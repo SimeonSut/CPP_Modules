@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 14:01:06 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/03 16:56:52 by marvin           ###   ########.fr       */
+/*   Updated: 2026/10/04 00:32:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int main(void)
 	while (1)
 	{
 		std::cout << "Input a command : ";
-		std::cin >> input;
+		getline(std::cin, input);
 		if (input.compare("ADD") == 0)
 			PhoneBook.add();
 		else if (input.compare("SEARCH") == 0)
 		{
-			std::cout << "Insert the index you want to consult :";
+			std::cout << "Insert the index you want to consult : ";
 			std::cin >> index;
 			PhoneBook.search(index);
 		}
@@ -38,6 +38,6 @@ int main(void)
 			std::cout << "invalid command : " << input << std::endl;
 		continue ;
 	}
-	std::cout << "EXITING THE PROGRAMM" << std::endl;
+	std::cout << "exit program" << std::endl;
 	return 0;
 }

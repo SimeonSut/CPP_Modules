@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 13:39:50 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/03 17:27:02 by marvin           ###   ########.fr       */
+/*   Updated: 2026/10/03 21:43:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Contact
 		Contact();
 		~Contact();
 		int	set( void );
-		void get( int index );
+		void get( int index ) const;
 	private:
 		std::string	data[5];
 };

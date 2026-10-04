@@ -2,7 +2,7 @@ CC = c++
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = PhoneBook.cpp Contact.cpp main.cpp
+SRC = Acoount.cpp Contact.cpp main.cpp
 
 HDR = PhoneBook.hpp
 

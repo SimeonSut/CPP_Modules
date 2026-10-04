@@ -32,7 +32,7 @@ void display(std::string str)
 	std::cout << std::setw(10) << output << "|";
 }
 
-void Contact::get(int index)
+void Contact::get(int index) const
 {
 	std::string	output;
 
