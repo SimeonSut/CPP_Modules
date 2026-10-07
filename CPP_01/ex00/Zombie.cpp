@@ -13,9 +13,17 @@
 #include "Zombie.hpp"
 
 Zombie::Zombie(std::string new_name) : name(new_name)
-{
-    std::cout << 
-}
+{}
 
 Zombie::~Zombie( void )
 {}
+
+std::string Zombie::get_name( void ) const
+{
+	return Zombie::name;
+}
+
+void Zombie::announce( void )
+{
+	std::cout << get_name() << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
