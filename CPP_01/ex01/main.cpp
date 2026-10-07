@@ -14,14 +14,11 @@
 
 int main(void)
 {
-	Zombie	*Zombie_ptr;
+	Zombie	*newHorde;
 
-	randomChump("one");
-	Zombie_ptr = newZombie("two");
-	Zombie_ptr->announce();
-	delete Zombie_ptr;
-	Zombie_ptr = zombieHorde(i, "Vincents");
-	for (int i = 4; i >= 0; i--)
-		Zombie_ptr[i]->annnounce();
+	newHorde = zombieHorde(5, "Vincents");
+	for (int i = 0; i <= 4; i++)
+		newHorde[i].announce();
+	delete [] newHorde;
 	return 0;
 }

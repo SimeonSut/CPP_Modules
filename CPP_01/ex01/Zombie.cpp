@@ -12,11 +12,19 @@
 
 #include "Zombie.hpp"
 
+Zombie::Zombie( void )
+{}
+
 Zombie::Zombie(std::string new_name) : name(new_name)
 {}
 
 Zombie::~Zombie( void )
 {}
+
+void Zombie::setName( std::string name )
+{
+	this->name = name;
+}
 
 std::string Zombie::getName( void ) const
 {
