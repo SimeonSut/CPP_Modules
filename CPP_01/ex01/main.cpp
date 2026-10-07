@@ -19,6 +19,6 @@ int main(void)
 	newHorde = zombieHorde(5, "Vincents");
 	for (int i = 0; i <= 4; i++)
 		newHorde[i].announce();
-	delete [] newHorde;
+	delete[] newHorde;
 	return 0;
 }
