@@ -10,20 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
+
 #include <string>
 #include <iostream>
-
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
-
-void announce( void );
 
 class Zombie
 {
 	public:
 		Zombie( std::string name );
 		~Zombie();
-		std::string get_name( void ) const;
+		std::string getName( void ) const;
 		void announce( void );
 	private:
 		std::string name;

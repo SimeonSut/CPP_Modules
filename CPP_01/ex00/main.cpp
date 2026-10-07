@@ -14,11 +14,11 @@
 
 int main(void)
 {
-	Zombie	*zptr;
-	randomChump("Tommy");
+	Zombie	*Zombie_ptr;
 
-	zptr = newZombie("Shelby");
-	zptr->announce();
-	delete zptr;
+	randomChump("one");
+	Zombie_ptr = newZombie("two");
+	Zombie_ptr->announce();
+	delete Zombie_ptr;
 	return 0;
 }

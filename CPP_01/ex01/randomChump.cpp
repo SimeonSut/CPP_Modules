@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/05 21:46:48 by marvin            #+#    #+#             */
-/*   Updated: 2026/10/05 21:46:48 by marvin           ###   ########.fr       */
+/*   Created: 2026/10/06 22:48:40 by marvin            #+#    #+#             */
+/*   Updated: 2026/10/06 22:48:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(std::string new_name) : name(new_name)
-{}
-
-Zombie::~Zombie( void )
-{}
-
-std::string Zombie::getName( void ) const
+//This function creates a zombie, names it, and makes it announce itself.
+void randomChump( std::string name )
 {
-	return Zombie::name;
-}
+	Zombie	*newZombie;
 
-void Zombie::announce( void )
-{
-	std::cout << getName() << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	newZombie = new Zombie(name);
+	newZombie->announce();
+	delete newZombie;
 }

@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/05 21:46:48 by marvin            #+#    #+#             */
-/*   Updated: 2026/10/05 21:46:48 by marvin           ###   ########.fr       */
+/*   Created: 2026/10/05 21:46:50 by marvin            #+#    #+#             */
+/*   Updated: 2026/10/05 21:46:50 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-Zombie::Zombie(std::string new_name) : name(new_name)
-{}
+#include <string>
+#include <iostream>
 
-Zombie::~Zombie( void )
-{}
-
-std::string Zombie::getName( void ) const
+class Zombie
 {
-	return Zombie::name;
-}
+	public:
+		Zombie( std::string name );
+		~Zombie();
+		std::string getName( void ) const;
+		void announce( void );
+	private:
+		std::string name;
+};
 
-void Zombie::announce( void )
-{
-	std::cout << getName() << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
+Zombie* newZombie( std::string name );
+void randomChump( std::string name );
+Zombie* zombieHorde( int N, std::string name );
+
+#endif

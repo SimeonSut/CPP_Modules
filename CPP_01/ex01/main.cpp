@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/05 21:46:48 by marvin            #+#    #+#             */
-/*   Updated: 2026/10/05 21:46:48 by marvin           ###   ########.fr       */
+/*   Created: 2026/10/05 21:46:46 by marvin            #+#    #+#             */
+/*   Updated: 2026/10/05 21:46:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(std::string new_name) : name(new_name)
-{}
-
-Zombie::~Zombie( void )
-{}
-
-std::string Zombie::getName( void ) const
+int main(void)
 {
-	return Zombie::name;
-}
+	Zombie	*Zombie_ptr;
 
-void Zombie::announce( void )
-{
-	std::cout << getName() << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	randomChump("one");
+	Zombie_ptr = newZombie("two");
+	Zombie_ptr->announce();
+	delete Zombie_ptr;
+	Zombie_ptr = zombieHorde(i, "Vincents");
+	for (int i = 4; i >= 0; i--)
+		Zombie_ptr[i]->annnounce();
+	return 0;
 }
