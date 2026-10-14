@@ -19,12 +19,16 @@ class Fixed
 {
 	public:
 		Fixed();
+		Fixed( Fixed const & src );
 		~Fixed();
+
+		Fixed & operator=( Fixed const & src );
+
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
 	private:
-		int _fixedp_nb_value;
-		static const int _fract_nb_value;
+		int 				_fixed_point_value;
+		static const int	_fract_value = 8;
 };
 
 #endif
