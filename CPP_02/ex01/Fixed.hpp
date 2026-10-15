@@ -29,6 +29,7 @@ class Fixed
 		int toInt( void ) const;
 
 		Fixed & operator=( Fixed const & src );
+		std::ostream operator<<( Fixed const & src );
 
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
