@@ -17,16 +17,17 @@ Fixed::Fixed( void ) : _fixed_point_value(0)
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed( const int integer ) : _fixed_point_value(integer)
+Fixed::Fixed( const int integer )
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->_fixed_point_value << this->_fract_value;
+
+	_fixed_point_value = integer << _fract_value;
 }
 
 Fixed::Fixed( const float floating )
 {
 	std::cout << "Float constructor called" << std::endl;
-	int	fixed_point = floating * 256;
+	_fixed_point_value = static_cast<int>(roundf(floating * 256));
 }
 
 Fixed::Fixed( Fixed const & src) : _fixed_point_value(src._fixed_point_value)
@@ -40,32 +41,35 @@ Fixed::~Fixed( void )
 }
 
 float Fixed::toFloat( void ) const
-{}
+{
+	return (static_cast<float>(_fixed_point_value) / 256);
+}
 
 int Fixed::toInt( void ) const
 {
-	return (this->_fixed_point_value / 256);
+	return (_fixed_point_value >> _fract_value);
 }
 
 Fixed & Fixed::operator=( Fixed const & src )
 {
 	std::cout << "Copy assignement operator called" << std::endl;
-	this->_fixed_point_value = src.getRawBits();
+	_fixed_point_value = src.getRawBits();
 	return *this;
 }
 
-std::ostream	Fixed::operator<<( Fixed const & src)
+std::ostream & operator<<( std::ostream &flowstream, Fixed const & src)
 {
-	return src.toInt();
+	flowstream << src.toFloat();
+	return flowstream;
 }
 
 int Fixed::getRawBits( void ) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
-	return this->_fixed_point_value;
+	return _fixed_point_value;
 }
 
 void Fixed::setRawBits( int const raw )
 {
-	this->_fixed_point_value = raw;
+	_fixed_point_value = raw;
 }

@@ -25,17 +25,18 @@ class Fixed
 		Fixed( Fixed const & src );
 		~Fixed();
 
-		float toFloat( void ) const;
-		int toInt( void ) const;
+		float	toFloat( void ) const;
+		int		toInt( void ) const;
 
 		Fixed & operator=( Fixed const & src );
-		std::ostream operator<<( Fixed const & src );
 
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
+		int		getRawBits( void ) const;
+		void	setRawBits( int const raw );
 	private:
 		int 				_fixed_point_value;
 		static const int	_fract_value = 8;
 };
+
+std::ostream & operator<<( std::ostream &flowstream, Fixed const & src);
 
 #endif
