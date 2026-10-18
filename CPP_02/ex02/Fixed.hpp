@@ -41,9 +41,20 @@ class Fixed
 		Fixed & operator-( Fixed const & src );
 		Fixed & operator*( Fixed const & src );
 		Fixed & operator/( Fixed const & src );
-	
+
+		Fixed &	operator++( void );
+		Fixed	operator++( int );
+		Fixed &	operator--( void );
+		Fixed	operator--( int );
+
+		static Fixed & min(Fixed & one, Fixed & two);
+		static const Fixed & min(Fixed const & one, Fixed const & two);
+		static Fixed & max(Fixed & one, Fixed & two);
+		static const Fixed & max(Fixed const & one, Fixed const & two);
+
 		int		getRawBits( void ) const;
 		void	setRawBits( int const raw );
+
 	private:
 		int 				_fixed_point_value;
 		static const int	_fract_value = 8;
