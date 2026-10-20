@@ -12,13 +12,13 @@
 
 #include "Point.hpp"
 
-Point::Point() : _x(0), _y(0), _x_to_pt(0), y_to_pt(0) 
+Point::Point() : _x(0), _y(0), _x_to_pt(0), _y_to_pt(0) 
 {}
 
-Point::Point( const float x, const float y ) : _y(x), _x(y), _x_to_pt(0), y_to_pt(0) 
+Point::Point( const float x, const float y ) : _x(y), _y(x), _x_to_pt(0), _y_to_pt(0) 
 {}
 
-Point::Point( Point const & src ) : _y(src.getYValue()), _x(src.getXValue()), _x_to_pt(0), y_to_pt(0) 
+Point::Point( Point const & src ) : _x(src.getXValue()), _y(src.getYValue()), _x_to_pt(0), _y_to_pt(0) 
 {}
 
 Point::~Point()
@@ -61,52 +61,52 @@ Fixed & getNextYValue() const
 	return _y_to_next;
 }
 
-void Fixed::setXValue( const int x )
+void Point::setXValue( const int x )
 {
 	_x.setRawBits(x << _x._fract_value);
 }
 
-void Fixed::setXValue( const float x )
+void Point::setXValue( const float x )
 {
 	_x.setRawBits(static_cast<int>(roundf(x * 256)));
 }
 
-void Fixed::setXValue( Fixed const & x )
+void Point::setXValue( Fixed const & x )
 {
 	_x.setRawBits(x.getRawBits());
 }
 
-void Fixed::setYValue( const int y )
+void Point::setYValue( const int y )
 {
 	_y.setRawBits(y << _y._fract_value);
 }
 
-void Fixed::setYValue( const float y )
+void Point::setYValue( const float y )
 {
 	_y.setRawBits(static_cast<int>(roundf(y * 256)));
 }
 
-void Fixed::setYValue( Fixed const & y )
+void Point::setYValue( Fixed const & y )
 {
 	_y.setRawBits(y.getRawBits());
 }
 
-void Fixed::setXToPoint( Point const & point )
+void Point::setXToPoint( Point const & point ) const
 {
 	_x_to_pt = point.getXValue() - getXValue();
 }
 
-void Fixed::setYToPoint( Point const & point )
+void Point::setYToPoint( Point const & point ) const
 {
 	_y_to_pt = point.getYValue() - getYValue();
 }
 
-void Fixed::setXToNext( Point const & next_x )
+void Point::setXToNext( Point const & next_x ) const
 {
 	_x_to_next = next_x.getXValue() - getXValue();
 }
 
-void Fixed::setYToNext( Point const & next_y )
+void Point::setYToNext( Point const & next_y ) const
 {
 	_y_to_next = next_y.getYValue() - getYValue();
 }

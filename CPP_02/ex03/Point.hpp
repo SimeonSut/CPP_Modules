@@ -34,16 +34,16 @@ class Point
 	
 		void setXValue( const int x );
 		void setXValue( const float x );
-		void setXValue( Fixed const & x );
+		void setXValue( const Fixed & x );
 		void setYValue( const int y );
 		void setYValue( const float y );
-		void setYValue( Fixed const & y );
-		void setXToPoint( Point const & point );
-		void setYToPoint( Point const & point );
-		void setXToNext( Point const & next_x );
-		void setYToNext( Point const & next_y );
+		void setYValue( const Fixed & y );
+		void setXToPoint( const Point & point ) const;
+		void setYToPoint( const Point & point ) const;
+		void setXToNext( const Point & next_x ) const;
+		void setYToNext( const Point & next_y ) const;
 
-		static const float crossProduct( Point const & vertex );
+		static float crossProduct( Point const & vertex );
 	private:
 		Fixed _x;
 		Fixed _y;
