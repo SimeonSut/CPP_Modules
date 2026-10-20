@@ -2,11 +2,11 @@ CC = c++
 
 FLAGS = -Wall -Wextra -Werror -g -std=c++98
 
-SRC = main.cpp Fixed.cpp
+SRC = main.cpp Fixed.cpp Point.cpp
 
-HDR = Fixed.hpp
+HDR = Fixed.hpp Point.hpp
 
-NAME = Fixed
+NAME = Point
 
 all: $(NAME)
 
