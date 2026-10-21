@@ -12,58 +12,58 @@
 
 #include "Point.hpp"
 
-Point::Point() : _x(0), _y(0), _x_to_pt(0), _y_to_pt(0) 
+Point::Point() : _x(0), _y(0), _x_to_pt(0), _y_to_pt(0), _x_to_next(0), _y_to_next(0)
 {}
 
-Point::Point( const float x, const float y ) : _x(y), _y(x), _x_to_pt(0), _y_to_pt(0) 
+Point::Point( const float x, const float y ) : _x(y), _y(x), _x_to_pt(0), _y_to_pt(0), _x_to_next(0), _y_to_next(0)
 {}
 
-Point::Point( Point const & src ) : _x(src.getXValue()), _y(src.getYValue()), _x_to_pt(0), _y_to_pt(0) 
+Point::Point( Point const & src ) : _x(src.getXValue()), _y(src.getYValue()), _x_to_pt(src.getPointXValue()), _y_to_pt(src.getPointYValue()), _x_to_next(src.getNextXValue()), _y_to_next(src.getNextYValue())
 {}
 
 Point::~Point()
 {}
 
-Point & operator=( Point const & src )
+Point & Point::operator=( Point const & src )
 {
 	setXValue(src.getXValue());
 	setYValue(src.getYValue());
 	return *this;
 }
 
-Fixed & Fixed::getXValue() const
+const Fixed & Point::getXValue() const
 {
 	return _x;
 }
 
-Fixed & Fixed::getYValue() const
+const Fixed & Point::getYValue() const
 {
 	return _y;
 }
 
-Fixed & getPointXValue() const
+const Fixed & Point::getPointXValue() const
 {
 	return _x_to_pt;
 }
 
-Fixed & getPointYValue() const
+const Fixed & Point::getPointYValue() const
 {
-	return _x_to_pt;
+	return _y_to_pt;
 }
 
-Fixed & getNextXValue() const
+const Fixed & Point::getNextXValue() const
 {
 	return _x_to_next;
 }
 
-Fixed & getNextYValue() const
+const Fixed & Point::getNextYValue() const
 {
 	return _y_to_next;
 }
 
-void Point::setXValue( const int x )
+void Point::setXValue( int x )
 {
-	_x.setRawBits(x << _x._fract_value);
+	_x.setRawBits(x << Fixed::getFractVal());
 }
 
 void Point::setXValue( const float x )
@@ -76,9 +76,9 @@ void Point::setXValue( Fixed const & x )
 	_x.setRawBits(x.getRawBits());
 }
 
-void Point::setYValue( const int y )
+void Point::setYValue( int y )
 {
-	_y.setRawBits(y << _y._fract_value);
+	_y.setRawBits(y << Fixed::getFractVal());
 }
 
 void Point::setYValue( const float y )
@@ -111,7 +111,7 @@ void Point::setYToNext( Point const & next_y ) const
 	_y_to_next = next_y.getYValue() - getYValue();
 }
 
-const float crossProduct( Point const & vertex )
+float Point::crossProduct( Point const & vertex )
 {
 	float topcross = vertex.getNextXValue().toFloat() * vertex.getPointYValue().toFloat();
 	float lowcross = vertex.getNextYValue().toFloat() * vertex.getPointXValue().toFloat();

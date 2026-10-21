@@ -25,17 +25,17 @@ class Point
 
 		Point & operator=( Point const & src );
 
-		Fixed & getYValue( void ) const;
-		Fixed & getXValue( void ) const;
-		Fixed & getPointXValue( void ) const;
-		Fixed & getPointYValue( void ) const;
-		Fixed & getNextXValue( void ) const;
-		Fixed & getNextYValue( void ) const;
+		const Fixed & getXValue( void ) const;// access _x
+		const Fixed & getYValue( void ) const;// access _y
+		const Fixed & getPointXValue( void ) const;// access _x_to_pt;
+		const Fixed & getPointYValue( void ) const;// access _y_to_pt;
+		const Fixed & getNextXValue( void ) const;// access _x_to_next;
+		const Fixed & getNextYValue( void ) const;// access _y_to_next;
 	
-		void setXValue( const int x );
+		void setXValue( int x );
 		void setXValue( const float x );
 		void setXValue( const Fixed & x );
-		void setYValue( const int y );
+		void setYValue( int y );
 		void setYValue( const float y );
 		void setYValue( const Fixed & y );
 		void setXToPoint( const Point & point ) const;

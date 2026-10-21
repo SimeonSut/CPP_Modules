@@ -51,11 +51,11 @@ int Fixed::toInt( void ) const
 	return (_fixed_point_value >> _fract_value);
 }
 
-Fixed & Fixed::operator=( Fixed const & src )
+Fixed Fixed::operator=( Fixed const & src ) const
 {
 //	std::cout << "Copy assignement operator called" << std::endl;
-	_fixed_point_value = src.getRawBits();
-	return *this;
+	Fixed result(src.getRawBits());
+	return result;
 }
 
 //----------COMPARISON OPERATORS FUNCTIONS OVERLOADS----------
@@ -92,29 +92,28 @@ bool	Fixed::operator!=( Fixed const & src )
 
 //----------ARITHMETIC OPERATORS FUNCTIONS OVERLOADS----------
 
-Fixed & Fixed::operator+( Fixed const & src )
+Fixed Fixed::operator+( Fixed const & src ) const
 {
-	_fixed_point_value += src.getRawBits();
-	return *this;
+	Fixed result(toFloat() + src.toFloat());
+	return result;
 }
 
-Fixed & Fixed::operator-( Fixed const & src )
+Fixed Fixed::operator-( Fixed const & src ) const
 {
-	_fixed_point_value -= src.getRawBits();
-	return *this;
+	Fixed result(toFloat() - src.toFloat());
+	return result;
 }
 
-Fixed & Fixed::operator*( Fixed const & src )
+Fixed Fixed::operator*( Fixed const & src ) const
 {
-//	std::cout << "left is : " << _fixed_point_value << "\n and right is : " << src.toFloat() << std::endl;
-	_fixed_point_value *= src.toFloat();
-	return *this;
+	Fixed result(_fixed_point_value * src.toFloat());
+	return result;
 }
 
-Fixed & Fixed::operator/( Fixed const & src )
+Fixed Fixed::operator/( Fixed const & src ) const
 {
-	_fixed_point_value /= src.toFloat();
-	return *this;
+	Fixed result(_fixed_point_value / src.toFloat());
+	return result;
 }
 
 //----------INCREMENTATION OPERATORS FUNCTIONS OVERLOADS----------
@@ -125,7 +124,7 @@ Fixed &	Fixed::operator++( void )
 	return *this;
 }
 
-Fixed 	Fixed::operator++( int )
+Fixed	Fixed::operator++( int )
 {
 	Fixed temp(toFloat());
 
@@ -197,4 +196,9 @@ int Fixed::getRawBits( void ) const
 void Fixed::setRawBits( int const raw )
 {
 	_fixed_point_value = raw;
+}
+
+int	Fixed::getFractVal( void )
+{
+	return _fract_value;
 }
