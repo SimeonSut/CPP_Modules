@@ -37,10 +37,10 @@ class Fixed
 		bool	operator==( Fixed const & src );
 		bool	operator!=( Fixed const & src );
 
-		Fixed & operator+( Fixed const & src );
-		Fixed & operator-( Fixed const & src );
-		Fixed & operator*( Fixed const & src );
-		Fixed & operator/( Fixed const & src );
+		Fixed operator+( Fixed const & src ) const ;
+		Fixed operator-( Fixed const & src ) const ;
+		Fixed operator*( Fixed const & src ) const ;
+		Fixed operator/( Fixed const & src ) const ;
 
 		Fixed &	operator++( void );
 		Fixed	operator++( int );
@@ -54,6 +54,8 @@ class Fixed
 
 		int		getRawBits( void ) const;
 		void	setRawBits( int const raw );
+
+		static int	getFractVal( void );
 
 	private:
 		int 				_fixed_point_value;

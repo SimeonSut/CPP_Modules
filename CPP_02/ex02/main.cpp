@@ -16,14 +16,14 @@
 int main(void)
 {
 	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	Fixed const c( Fixed( 10.05f ) / Fixed( 2 ) );
-	Fixed const d( Fixed( 10.05f ) + Fixed( 2 ) );
-	Fixed const e( Fixed( 10.05f ) - Fixed( 2 ) );
-	Fixed const b_bis( Fixed( 2 ) * Fixed( 5.05f ) );
-	Fixed const c_bis( Fixed( 2 ) / Fixed( 10.05f ) );
-	Fixed const d_bis( Fixed( 2 ) + Fixed( 10.05f ) );
-	Fixed const e_bis( Fixed( 2 ) - Fixed( 10.05f ) );
+	Fixed b( Fixed( 5.05f ) * Fixed( 2 ) );
+	Fixed c( Fixed( 10.05f ) / Fixed( 2 ) );
+	Fixed d( Fixed( 10.05f ) + Fixed( 2 ) );
+	Fixed e( Fixed( 10.05f ) - Fixed( 2 ) );
+	Fixed b_bis( Fixed( 2 ) * Fixed( 5.05f ) );
+	Fixed c_bis( Fixed( 2 ) / Fixed( 10.05f ) );
+	Fixed d_bis( Fixed( 2 ) + Fixed( 10.05f ) );
+	Fixed e_bis( Fixed( 2 ) - Fixed( 10.05f ) );
 
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;
@@ -31,6 +31,11 @@ int main(void)
 	std::cout << a++ << std::endl;
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
+	std::cout << a - b << std::endl;
+	std::cout << "a is :" << a << std::endl;
+	std::cout << "b is :" << b << std::endl;
+	b = a;
+	std::cout << "new b is :" << b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
 	std::cout << Fixed::min( a, b ) << std::endl;
 	std::cout << "value of c is : " << c << std::endl;

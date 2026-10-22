@@ -15,11 +15,19 @@
 Point::Point() : _x(0), _y(0), _x_to_pt(0), _y_to_pt(0), _x_to_next(0), _y_to_next(0)
 {}
 
-Point::Point( const float x, const float y ) : _x(y), _y(x), _x_to_pt(0), _y_to_pt(0), _x_to_next(0), _y_to_next(0)
+Point::Point( const float x, const float y ) : _x(x), _y(y), _x_to_pt(0), _y_to_pt(0), _x_to_next(0), _y_to_next(0)
 {}
 
 Point::Point( Point const & src ) : _x(src.getXValue()), _y(src.getYValue()), _x_to_pt(src.getPointXValue()), _y_to_pt(src.getPointYValue()), _x_to_next(src.getNextXValue()), _y_to_next(src.getNextYValue())
 {}
+
+Point::Point( Point const & src, Point const & next, Point const & point) : _x(src.getXValue()), _y(src.getYValue())
+{
+	setXToPoint( point );
+	setYToPoint( point );
+	setXToNext( next );
+	setYToNext( next );
+}
 
 Point::~Point()
 {}
@@ -91,22 +99,22 @@ void Point::setYValue( Fixed const & y )
 	_y.setRawBits(y.getRawBits());
 }
 
-void Point::setXToPoint( Point const & point ) const
+void Point::setXToPoint( Point const & point )
 {
 	_x_to_pt = point.getXValue() - getXValue();
 }
 
-void Point::setYToPoint( Point const & point ) const
+void Point::setYToPoint( Point const & point )
 {
 	_y_to_pt = point.getYValue() - getYValue();
 }
 
-void Point::setXToNext( Point const & next_x ) const
+void Point::setXToNext( Point const & next_x )
 {
 	_x_to_next = next_x.getXValue() - getXValue();
 }
 
-void Point::setYToNext( Point const & next_y ) const
+void Point::setYToNext( Point const & next_y )
 {
 	_y_to_next = next_y.getYValue() - getYValue();
 }

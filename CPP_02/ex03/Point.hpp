@@ -21,6 +21,7 @@ class Point
 		Point( void );
 		Point( const float x, const float y );
 		Point( Point const & src );
+		Point( Point const & src, Point const & next, Point const & point);
 		~Point();
 
 		Point & operator=( Point const & src );
@@ -38,10 +39,10 @@ class Point
 		void setYValue( int y );
 		void setYValue( const float y );
 		void setYValue( const Fixed & y );
-		void setXToPoint( const Point & point ) const;
-		void setYToPoint( const Point & point ) const;
-		void setXToNext( const Point & next_x ) const;
-		void setYToNext( const Point & next_y ) const;
+		void setXToPoint( const Point & point );
+		void setYToPoint( const Point & point );
+		void setXToNext( const Point & next_x );
+		void setYToNext( const Point & next_y );
 
 		static float crossProduct( Point const & vertex );
 	private:

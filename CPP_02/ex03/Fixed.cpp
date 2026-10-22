@@ -51,11 +51,10 @@ int Fixed::toInt( void ) const
 	return (_fixed_point_value >> _fract_value);
 }
 
-Fixed Fixed::operator=( Fixed const & src ) const
+Fixed & Fixed::operator=( Fixed const & src )
 {
-//	std::cout << "Copy assignement operator called" << std::endl;
-	Fixed result(src.getRawBits());
-	return result;
+	setRawBits(src.getRawBits());
+	return *this;
 }
 
 //----------COMPARISON OPERATORS FUNCTIONS OVERLOADS----------

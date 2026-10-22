@@ -28,7 +28,7 @@ class Fixed
 		float	toFloat( void ) const;
 		int		toInt( void ) const;
 
-		Fixed operator=( Fixed const & src ) const;
+		Fixed & operator=( Fixed const & src );
 
 		bool	operator>( Fixed const & src );
 		bool	operator<( Fixed const & src );
