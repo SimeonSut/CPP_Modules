@@ -2,9 +2,9 @@ CC = c++
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp ClapTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
 
-HDR = ClapTrap.hpp
+HDR = ClapTrap.hpp ScavTrap.hpp
 
 NAME = test
 

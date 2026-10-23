@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 18:26:00 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/22 21:21:35 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/23 17:48:51 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class ClapTrap
 		ClapTrap & operator=( const ClapTrap & src );
 
 //--------------------GETTERS--------------------
-		
+
 		std::string getName() const;
 		short getHitPoints() const;
 		short getEnergyPoints() const;
@@ -51,12 +51,13 @@ class ClapTrap
 		void beRepaired( unsigned int amount );
 
 	protected:
-	private:
 
 		std::string name;
 		short HitPoints;
 		short EnergyPoints;
 		short AttackDamage;
+
+	private:
 
 };
 

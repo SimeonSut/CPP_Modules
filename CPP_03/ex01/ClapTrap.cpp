@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 18:25:58 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/22 21:32:15 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/23 18:13:49 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ClapTrap::ClapTrap() : name("NoName"), HitPoints(10), EnergyPoints(10), AttackDa
 ClapTrap::ClapTrap( std::string newName ) : name(newName), HitPoints(10), EnergyPoints(10), AttackDamage(0)
 {
 	if (DEBUG)
-		std::cout << "Constructor with newName parameter" << newName << " called" << std::endl;
+		std::cout << "Constructor with newName parameter " << newName << " called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap & src) : name(src.getName()), HitPoints(src.getHitPoints()), EnergyPoints(src.getEnergyPoints()), AttackDamage(src.getAttackDamage())
@@ -73,7 +73,7 @@ short ClapTrap::getEnergyPoints() const
 short ClapTrap::getAttackDamage() const
 {
 	if (DEBUG)
-		std::cout << "\ngetAttackDamage called" << std::endl;
+		std::cout << "getAttackDamage called" << std::endl;
 	return AttackDamage;
 }
 
@@ -114,18 +114,13 @@ void ClapTrap::attack(const std::string& target)
 {
 	short currentEnergyPoints = getEnergyPoints();
 
-	if (target.size() == 0)
-	{
-		std::cout << "invalid target input!!" << std::endl;
-		return;
-	}
 	if (currentEnergyPoints <= 0)
 	{
 		std::cout << "ClapTrap " << getName() << " is out of energy and can't attack!" << std::endl;
 		return ;
 	}
 	std::cout	<< "ClapTrap " << getName() << " attacks " << target
-				<< " causing " << getAttackDamage() << " points of damage!"
+				<< " causing \n" << getAttackDamage() << " points of damage!"
 				<< std::endl;
 	setEnergyPoints( currentEnergyPoints - 1 );
 }

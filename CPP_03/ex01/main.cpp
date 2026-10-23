@@ -6,11 +6,11 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 18:25:57 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/22 21:32:27 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/23 18:21:33 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 /********TO ENABLE DEBUGING MODE, COMPILE WITH THE COMMAND BELOW***********
 * c++ -Wall -Wextra -Werror -D DEBUG=1 -std=c++98
@@ -22,16 +22,21 @@ int	main(void)
 				<< "----------Claptraps declarations tests!----------\n\n";
 
 	ClapTrap a;
-	ClapTrap b;
-	ClapTrap c("Jean-Paul Sartre");
 
 	std::cout	<< "\n----------Claptrap actions tests!!----------\n\n";
-	c.attack("b");
-	c.takeDamage(5);
-	c.takeDamage(1);
-	c.beRepaired(2);
-	c.takeDamage(7);
-	b.takeDamage(0);
+	a.takeDamage(5);
+	std::cout	<< "\n----------Scavtrap actions tests!!----------\n\n";
+	ScavTrap b("Billy Boy");
+	ScavTrap c("Victor Hugo");
+	b = c;
+	ScavTrap d(b);
+	d.guardGate();
+	b.guardGate();
+	c.attack("That guy");
+	c.attack("");
+	c.takeDamage(57);
+	c.takeDamage(57);
+	c.guardGate();
 	std::cout << std::endl;
 
 	return 0;
