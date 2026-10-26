@@ -6,36 +6,68 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 14:33:52 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/25 20:32:38 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/26 17:23:47 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "Brain.hpp"
 
 int main(void)
 {
-	const Animal*	meta = new Animal();
-	const Animal*	j = new Dog();
-	const Animal*	i = new Cat();
-	const Animal*	k = new Dog();
-	Animal*			l = new Cat();
+//-----------------------Brain TESTS-----------------------
+	Brain *	a = new Brain();
+	Brain *	b = new Brain();
 
-	*l = *k;
-	std::cout << "\nThe types of the objects in order are : \n\n";
-	std::cout << meta->getType() << "\n";
-	std::cout << j->getType() << "\n";
-	std::cout << i->getType() << "\n";
-	std::cout << k->getType() << "\n";
-	std::cout << l->getType() << "\n";
+	std::cout << "-----A Ideas-----\n\n";
+	a->setIdea("Hello World!");
+	a->setIdea("Hello World!");
+	a->setIdea("Hello World!");
+	a->setIdea("Hello World!");
+	a->setIdea("Hello World!");
+	a->setIdea("Hello World!");
+	a->sayIdeas();
+	std::cout << "-----B Ideas-----\n\n";
+	b->setIdea("Hello World!");
+	b->setIdea("Hello World!");
+	b->setIdea("Hello World!");
+	b->setIdea("Hello World!");
+	b->setIdea("Hello World!");
+	b->setIdea("Hello World!");
+	b->sayIdeas();
+//	Brain * c(b);
+	Brain * c = new Brain(*b);
+	Brain * d = new Brain();
+	*d = *b;
+	std::cout << "-----C Ideas-----\n\n";
+	c->sayIdeas();
+	std::cout << "-----D Ideas-----\n\n";
+	delete a;
+	delete b;
+	std::cout << "-----C Ideas after deletion of B-----\n\n";
+	c->sayIdeas();
+	std::cout << "-----D Ideas after deletion of B-----\n\n";
+	d->sayIdeas();
+	std::cout << "-----Cat tests-----\n\n";
+	delete c;
+	delete d;
 
-	std::cout << "\nThe types of the objects in order are : \n\n";
-	meta->makeSound();
-	j->makeSound();
-	i->makeSound();
-	k->makeSound();
-	l->makeSound();
-	std::cout << std::endl;
+//-----------------------ANIMALS ARRAY TESTS-----------------------
+	Animal* array[10];
+
+	for (short i = 0; i < 10; i++)
+	{
+		if (i < 5)
+			array[i] = new Cat();
+		else
+			array[i] = new Dog();
+	}
+	for (short i = 0; i < 10; i++)
+	{
+		array[i]->makeSound();
+		delete array[i];
+	}
 	return 0;
 }

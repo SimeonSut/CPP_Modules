@@ -4,9 +4,9 @@ FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 DEBUG_FLAGS = -D DEBUG=1
 
-SRC = Animal.cpp Cat.cpp Dog.cpp main.cpp
+SRC = Animal.cpp Cat.cpp Dog.cpp main.cpp Brain.cpp
 
-HDR = Animal.hpp Cat.hpp Dog.hpp
+HDR = Animal.hpp Cat.hpp Dog.hpp Brain.hpp
 
 NAME = test
 

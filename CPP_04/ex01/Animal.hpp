@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 14:36:02 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/25 20:27:02 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/26 17:17:11 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #endif
 
 #include <iostream>
+#include "Brain.hpp"
 
 class Animal
 {
@@ -25,7 +26,7 @@ class Animal
 
 		Animal();
 		Animal( Animal const & src );
-		~Animal();
+		virtual ~Animal();
 
 		virtual std::string getType() const;
 		virtual void setType( std::string const & newType );

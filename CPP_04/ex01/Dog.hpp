@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:22:28 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/25 20:26:11 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/26 17:17:23 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ class Dog : virtual public Animal
 
 		Dog();
 		Dog( Dog const & src );
-		~Dog();
+		virtual ~Dog();
 
 		virtual std::string getType() const;
+		Brain & getBrain() const;
 		virtual void setType( std::string const & newType );
-//		virtual void makeSound() const;
+		void setBrain( const Brain & src );
 
 		Dog & operator=( const Dog & src );
 
@@ -35,6 +36,9 @@ class Dog : virtual public Animal
 		std::string type;
 
 	private:
+
+		Brain * brain;
+
 };
 
 #endif
