@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:22:26 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/27 14:30:41 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 21:39:52 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ Dog::~Dog()
 	delete brain;
 }
 
+Dog & Dog::operator=( const Dog & src )
+{
+	std::cout  << type << " Assignation overload called" << std::endl;
+	setType(src.getType());
+	return *this;
+}
+
 std::string Dog::getType() const
 {
 	if (DEBUG)
@@ -40,13 +47,6 @@ Brain & Dog::getBrain() const
 	if (DEBUG)
 		std::cout  << type << " getBrain called" << std::endl;
 	return *brain;
-}
-
-void Dog::setType( std::string const & newType )
-{
-	if (DEBUG)
-		std::cout  << type << " setType called" << std::endl;
-	type = newType;
 }
 
 void Dog::setBrain( const Brain & src )

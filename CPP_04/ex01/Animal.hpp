@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 14:36:02 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/26 17:17:11 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 21:28:57 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ class Animal
 		Animal( Animal const & src );
 		virtual ~Animal();
 
+		Animal & operator=( const Animal & src );
+
 		virtual std::string getType() const;
-		virtual void setType( std::string const & newType );
 		void makeSound() const;
 
-		Animal & operator=( const Animal & src );
 
 	protected:
 
+		virtual void setType( std::string const & newType );
 		std::string type;
 
 	private:

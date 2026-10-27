@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:22:28 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/26 17:17:23 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 21:33:08 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,14 @@ class Dog : virtual public Animal
 		Dog( Dog const & src );
 		virtual ~Dog();
 
+		Dog & operator=( const Dog & src );
+
 		virtual std::string getType() const;
 		Brain & getBrain() const;
-		virtual void setType( std::string const & newType );
-		void setBrain( const Brain & src );
-
-		Dog & operator=( const Dog & src );
 
 	protected:
 
+		void setBrain( const Brain & src );
 		std::string type;
 
 	private:

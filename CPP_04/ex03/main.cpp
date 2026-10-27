@@ -6,11 +6,13 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 17:57:21 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/26 20:31:48 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 22:22:11 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "MateriaSource.hpp"
+#include "Character.hpp"
 
 int main(void)
 {

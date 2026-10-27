@@ -6,18 +6,18 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:22:26 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/27 14:28:27 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 21:35:22 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : type("Dog"), brain(new Brain())
+Dog::Dog() : type("Dog")
 {
 	std::cout  << type << " Default Constructor called" << std::endl;
 }
 
-Dog::Dog(Dog const & src ) : type(src.getType()), brain(new Brain(src.getBrain()))
+Dog::Dog( Dog const & src ) : type(src.getType())
 {
 	std::cout  << type << " Copy Constructor called" << std::endl;
 }
@@ -25,7 +25,13 @@ Dog::Dog(Dog const & src ) : type(src.getType()), brain(new Brain(src.getBrain()
 Dog::~Dog()
 {
 	std::cout  << type << " Destructor called" << std::endl;
-	delete brain;
+}
+
+Dog & Dog::operator=( const Dog & src )
+{
+	std::cout  << type << " Assignation overload called" << std::endl;
+	setType(src.getType());
+	return *this;
 }
 
 std::string Dog::getType() const
@@ -40,13 +46,6 @@ Brain & Dog::getBrain() const
 	if (DEBUG)
 		std::cout  << type << " getBrain called" << std::endl;
 	return *brain;
-}
-
-void Dog::setType( std::string const & newType )
-{
-	if (DEBUG)
-		std::cout  << type << " setType called" << std::endl;
-	type = newType;
 }
 
 void Dog::setBrain( const Brain & src )

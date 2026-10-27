@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 14:36:04 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/27 14:25:09 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 21:18:26 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ Animal::Animal( Animal const & src ) : type(src.getType())
 Animal::~Animal()
 {
 	std::cout  << type << " Destructor called" << std::endl;
+}
+
+Animal & Animal::operator=( const Animal & src )
+{
+	std::cout  << type << " Assignation overload called" << std::endl;
+	setType(src.getType());
+	return *this;
 }
 
 std::string Animal::getType() const
@@ -54,12 +61,4 @@ void Animal::makeSound() const
 		std::cout  << "Meow" << std::endl;
 	else if (getType().compare("Dog") == 0)
 		std::cout  << "Woof" << std::endl;
-}
-
-Animal & Animal::operator=( const Animal & src )
-{
-	if (DEBUG)
-		std::cout  << type << " Assignation overload called" << std::endl;
-	setType(src.getType());
-	return *this;
 }

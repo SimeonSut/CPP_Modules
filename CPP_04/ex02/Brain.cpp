@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 12:18:43 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/27 14:30:22 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 21:38:58 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@ Brain::Brain( Brain const & src )
 		ideas[i] = src.ideas[i];
 }
 
+Brain::~Brain()
+{
+	std::cout  << " Brain Destructor called" << std::endl;
+}
+
+Brain & Brain::operator=( Brain const & src )
+{
+	for (short i = 0; i < 100; i++)
+		ideas[i] = src.ideas[i];
+	return *this;
+}
+
 void Brain::sayIdeas()
 {
 	for (short i = 0; i < 100; i++)
@@ -43,16 +55,4 @@ void Brain::setIdea( std::string idea )
 			break ;
 		}
 	}
-}
-
-Brain::~Brain()
-{
-	std::cout  << " Brain Destructor called" << std::endl;
-}
-
-Brain & Brain::operator=( Brain const & src )
-{
-	for (short i = 0; i < 100; i++)
-		ideas[i] = src.ideas[i];
-	return *this;
 }

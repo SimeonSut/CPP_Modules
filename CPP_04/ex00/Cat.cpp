@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:22:24 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/27 14:25:49 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 21:18:23 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ Cat::~Cat()
 	std::cout  << type << " Destructor called" << std::endl;
 }
 
+Cat & Cat::operator=( const Cat & src )
+{
+	std::cout  << type << " Assignation overload called" << std::endl;
+	setType(src.getType());
+	return *this;
+}
+
 std::string Cat::getType() const
 {
 	if (DEBUG)
 		std::cout  << type << " getType called" << std::endl;
 	return type;
-}
-
-void Cat::setType( std::string const & newType )
-{
-	if (DEBUG)
-		std::cout  << type << " setType called" << std::endl;
-	type = newType;
 }

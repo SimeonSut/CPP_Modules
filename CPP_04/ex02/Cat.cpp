@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:22:24 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/27 14:30:34 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 21:39:57 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ Cat::~Cat()
 	delete brain;
 }
 
+Cat & Cat::operator=( const Cat & src )
+{
+	std::cout  << type << " Assignation overload called" << std::endl;
+	setType(src.getType());
+	return *this;
+}
+
 std::string Cat::getType() const
 {
 	if (DEBUG)
@@ -40,13 +47,6 @@ Brain & Cat::getBrain() const
 	if (DEBUG)
 		std::cout  << type << " getBrain called" << std::endl;
 	return *brain;
-}
-
-void Cat::setType( std::string const & newType )
-{
-	if (DEBUG)
-		std::cout  << type << " setType called" << std::endl;
-	type = newType;
 }
 
 void Cat::setBrain( const Brain & src )

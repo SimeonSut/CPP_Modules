@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:22:30 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/25 20:26:09 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 21:20:13 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ class Cat : virtual public Animal
 		Cat( Cat const & src );
 		~Cat();
 
-		virtual std::string getType() const;
-		virtual void setType( std::string const & newType );
-//		virtual void makeSound() const;
-
 		Cat & operator=( const Cat & src );
+
+		virtual std::string getType() const;
 
 	protected:
 
