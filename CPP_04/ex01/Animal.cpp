@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 14:36:04 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/25 20:27:44 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 14:28:07 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,17 @@
 
 Animal::Animal() : type("Animal")
 {
-	if (DEBUG)
-		std::cout  << type << " Default Constructor called" << std::endl;
+	std::cout  << type << " Default Constructor called" << std::endl;
 }
 
 Animal::Animal( Animal const & src ) : type(src.getType())
 {
-	if (DEBUG)
-		std::cout  << type << " Copy Constructor called" << std::endl;
+	std::cout  << type << " Copy Constructor called" << std::endl;
 }
 
 Animal::~Animal()
 {
-	if (DEBUG)
-		std::cout  << type << " Destructor called" << std::endl;
+	std::cout  << type << " Destructor called" << std::endl;
 }
 
 std::string Animal::getType() const

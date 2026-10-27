@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 12:18:43 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/26 17:31:15 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 14:29:13 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 Brain::Brain()
 {
+	std::cout  << " Brain Default Constructor called" << std::endl;
 	for (short i = 0; i < 100; i++)
 		ideas[i] = "No more ideas in that little Brain";
 }
 
 Brain::Brain( Brain const & src )
 {
+	std::cout  << " Brain Copy Constructor called" << std::endl;
 	for (short i = 0; i < 100; i++)
 		ideas[i] = src.ideas[i];
 }
@@ -44,7 +46,9 @@ void Brain::setIdea( std::string idea )
 }
 
 Brain::~Brain()
-{}
+{
+	std::cout  << " Brain Destructor called" << std::endl;
+}
 
 Brain & Brain::operator=( Brain const & src )
 {
