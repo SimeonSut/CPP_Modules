@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 21:39:51 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/27 14:22:19 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 20:45:44 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,42 @@
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
+	std::cout << "ScavTrap Constructor called" << std::endl;
 	setHitPoints(ScavHitPoints);
 	setEnergyPoints(ScavEnergyPoints);
 	setAttackDamage(ScavAttackDamage);
-	std::cout << "ScavTrap Constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap( std::string newName ) : ClapTrap( newName )
 {
+	std::cout << "ScavTrap Constructor with newName called" << getName() << " called" << std::endl;
 	setHitPoints(ScavHitPoints);
 	setEnergyPoints(ScavEnergyPoints);
 	setAttackDamage(ScavAttackDamage);
-	std::cout << "ScavTrap Constructor with newName " << getName() << " called" << std::endl;
+}
+
+ScavTrap::ScavTrap( const ScavTrap & src )
+{
+	std::cout << "ScavTrap Copy Constructor called" << std::endl;
+	setName(src.getName());
+	setHitPoints(src.getHitPoints());
+	setEnergyPoints(src.getEnergyPoints());
+	setAttackDamage(src.getAttackDamage());
 }
 
 ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap Destructor called" << std::endl;
+}
+
+ScavTrap & ScavTrap::operator=( const ScavTrap & src )
+{
+	std::cout << "ScavTrap Assignement operator overload called" << std::endl;
+	setName(src.getName());
+	setHitPoints(src.getHitPoints());
+	setEnergyPoints(src.getEnergyPoints());
+	setAttackDamage(src.getAttackDamage());
+	return *this;
 }
 
 void ScavTrap::attack(const std::string& target)

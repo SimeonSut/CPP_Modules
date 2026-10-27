@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 18:25:57 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/23 19:49:46 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 20:37:30 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(void)
 	c.takeDamage(57);
 	c.takeDamage(57);
 	c.guardGate();
-		std::cout	<< "\n----------Fragtrap actions tests!!----------\n\n";
+	std::cout	<< "\n----------Fragtrap actions tests!!----------\n\n";
 	FragTrap	e;
 	FragTrap	f("Luke Skywalker");
 	FragTrap	g(f);
@@ -48,7 +48,8 @@ int	main(void)
 	f.highFivesGuys();
 	g.highFivesGuys();
 	h.highFivesGuys();
-	e.takeDamage(100);
+	e.takeDamage(99);
+	e.takeDamage(1);
 	f.attack(g.getName());
 	std::cout << std::endl;
 	return 0;

@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 19:05:44 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/24 21:31:21 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 20:47:28 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ class FragTrap : virtual public ClapTrap
 	public:
 
 		FragTrap();
-		FragTrap( std::string src );
+		FragTrap ( std::string newName );
+		FragTrap( const FragTrap & src );
 		~FragTrap();
+
+		FragTrap & operator=( const FragTrap & src );
 
 		void highFivesGuys(void);
 

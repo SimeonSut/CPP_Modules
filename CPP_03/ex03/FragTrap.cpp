@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 19:05:45 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/27 14:22:09 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 20:47:42 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,42 @@
 
 FragTrap::FragTrap() : ClapTrap()
 {
+	std::cout << "FragTrap Constructor called" << std::endl;
 	setHitPoints(FragHitPoints);
 	setEnergyPoints(FragEnergyPoints);
 	setAttackDamage(FragAttackDamage);
-	std::cout << "TrapClap Constructor called" << std::endl;
 }
 
-FragTrap::FragTrap( std::string newName ) : ClapTrap ( newName )
+FragTrap::FragTrap( std::string newName ) : ClapTrap( newName )
 {
+	std::cout << "FragTrap Constructor with newName called" << getName() << " called" << std::endl;
 	setHitPoints(FragHitPoints);
 	setEnergyPoints(FragEnergyPoints);
-	setAttackDamage(FragAttackDamage);	
-	std::cout << "TrapClap Constructor with newName" << newName << " parameter called" << std::endl;
+	setAttackDamage(FragAttackDamage);
+}
 
+FragTrap::FragTrap( const FragTrap & src )
+{
+	std::cout << "FragTrap Copy Constructor called" << std::endl;
+	setName(src.getName());
+	setHitPoints(src.getHitPoints());
+	setEnergyPoints(src.getEnergyPoints());
+	setAttackDamage(src.getAttackDamage());
 }
 
 FragTrap::~FragTrap()
 {
-	std::cout << "TrapClap Destructor called" << std::endl;
+	std::cout << "FragTrap Destructor called" << std::endl;
+}
+
+FragTrap & FragTrap::operator=( const FragTrap & src )
+{
+	std::cout << "FragTrap Assignement operator overload called" << std::endl;
+	setName(src.getName());
+	setHitPoints(src.getHitPoints());
+	setEnergyPoints(src.getEnergyPoints());
+	setAttackDamage(src.getAttackDamage());
+	return *this;
 }
 
 void FragTrap::highFivesGuys(void)

@@ -6,37 +6,54 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 19:05:45 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/23 19:55:37 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 20:31:28 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
+const short FragTrap::FragHitPoints;
+const short FragTrap::FragEnergyPoints;
+const short FragTrap::FragAttackDamage;
+
 FragTrap::FragTrap() : ClapTrap()
 {
-	setHitPoints(100);
-	setEnergyPoints(100);
-	setAttackDamage(30);
-	if (DEBUG)
-		std::cout << "TrapClap Constructor called" << std::endl;
-
+	std::cout << "FragTrap Constructor called" << std::endl;
+	setHitPoints(FragHitPoints);
+	setEnergyPoints(FragEnergyPoints);
+	setAttackDamage(FragAttackDamage);
 }
 
-FragTrap::FragTrap( std::string newName ) : ClapTrap ( newName )
+FragTrap::FragTrap( std::string newName ) : ClapTrap( newName )
 {
-	setHitPoints(100);
-	setEnergyPoints(100);
-	setAttackDamage(30);	
-	if (DEBUG)
-		std::cout << "TrapClap Constructor with newName" << newName << " parameter called" << std::endl;
+	std::cout << "FragTrap Constructor with newName called" << getName() << " called" << std::endl;
+	setHitPoints(FragHitPoints);
+	setEnergyPoints(FragEnergyPoints);
+	setAttackDamage(FragAttackDamage);
+}
 
+FragTrap::FragTrap( const FragTrap & src )
+{
+	std::cout << "FragTrap Copy Constructor called" << std::endl;
+	setName(src.getName());
+	setHitPoints(src.getHitPoints());
+	setEnergyPoints(src.getEnergyPoints());
+	setAttackDamage(src.getAttackDamage());
 }
 
 FragTrap::~FragTrap()
 {
-	if (DEBUG)
-		std::cout << "TrapClap Destructor called" << std::endl;
+	std::cout << "FragTrap Destructor called" << std::endl;
+}
 
+FragTrap & FragTrap::operator=( const FragTrap & src )
+{
+	std::cout << "FragTrap Assignement operator overload called" << std::endl;
+	setName(src.getName());
+	setHitPoints(src.getHitPoints());
+	setEnergyPoints(src.getEnergyPoints());
+	setAttackDamage(src.getAttackDamage());
+	return *this;
 }
 
 void FragTrap::highFivesGuys(void)

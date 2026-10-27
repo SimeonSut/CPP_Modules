@@ -6,36 +6,35 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 18:25:58 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/27 14:21:45 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 20:44:49 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : name("NoName"), HitPoints(10), EnergyPoints(10), AttackDamage(0)
+ClapTrap::ClapTrap() : name("NoName"), HitPoints(ClapHitPoints), EnergyPoints(ClapEnergyPoints), AttackDamage(ClapAttackDamage)
 {
-	std::cout << "Constructor called" << std::endl;
+	std::cout << "ClapTrap Constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap( std::string newName ) : name(newName), HitPoints(10), EnergyPoints(10), AttackDamage(0)
+ClapTrap::ClapTrap( std::string newName ) : name(newName), HitPoints(ClapHitPoints), EnergyPoints(ClapEnergyPoints), AttackDamage(ClapAttackDamage)
 {
-	std::cout << "Constructor with newName parameter " << newName << " called" << std::endl;
+	std::cout << "ClapTrap Constructor with newName parameter " << newName << " called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap & src) : name(src.getName()), HitPoints(src.getHitPoints()), EnergyPoints(src.getEnergyPoints()), AttackDamage(src.getAttackDamage())
 {
-	std::cout << "Copy Constructor called" << std::endl;
+	std::cout << "ClapTrap Copy Constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
 ClapTrap & ClapTrap::operator=(const ClapTrap & src)
 {
-	if (DEBUG)
-		std::cout << "Assignement operator overload called" << std::endl;
+	std::cout << "ClapTrap Assignement operator overload called" << std::endl;
 	setName(src.getName());
 	setHitPoints(src.getHitPoints());
 	setEnergyPoints(src.getEnergyPoints());

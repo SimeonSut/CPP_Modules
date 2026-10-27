@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 19:57:48 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/27 14:21:55 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 20:51:46 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,44 @@
 
 DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap(), name(ClapTrap::getName())
 {
+	std::cout << "DiamondTrap Constructor called" << std::endl;
 	setClapName(name);
 	setHitPoints(FragHitPoints);
 	setEnergyPoints(ScavEnergyPoints);
 	setAttackDamage(FragAttackDamage);
-	std::cout << "DiamondTrap Constructor called" << std::endl;
 }
 
-DiamondTrap::DiamondTrap( const std::string & newName ) : ClapTrap( newName ), ScavTrap( newName ), FragTrap( newName ), name(newName)
+DiamondTrap::DiamondTrap( std::string newName ) : ClapTrap( newName ), ScavTrap( newName ), FragTrap( newName ), name(newName)
 {
+	std::cout << "DiamondTrap Constructor with newName parameter called" << std::endl;
 	setClapName(name);
 	setHitPoints(FragHitPoints);
 	setEnergyPoints(ScavEnergyPoints);
 	setAttackDamage(FragAttackDamage);
-	std::cout << "DiamondTrap Constructor with newName parameter called" << std::endl;
+}
+
+DiamondTrap::DiamondTrap( const DiamondTrap & src )
+{
+	std::cout << "DiamondTrap Copy Constructor called" << std::endl;
+	setName(src.getName());
+	setHitPoints(src.getHitPoints());
+	setEnergyPoints(src.getEnergyPoints());
+	setAttackDamage(src.getAttackDamage());
 }
 
 DiamondTrap::~DiamondTrap()
 {
 	std::cout << "DiamondTrap Destructor called" << std::endl;
+}
+
+DiamondTrap & DiamondTrap::operator=( const DiamondTrap & src )
+{
+	std::cout << "DiamondTrap Assignement operator overload called" << std::endl;
+	setName(src.getName());
+	setHitPoints(src.getHitPoints());
+	setEnergyPoints(src.getEnergyPoints());
+	setAttackDamage(src.getAttackDamage());
+	return *this;
 }
 
 void DiamondTrap::setClapName( std::string newName )
@@ -52,6 +71,8 @@ std::string DiamondTrap::getClapName() const
 
 void DiamondTrap::attack( const std::string& target )
 {
+	if (DEBUG)
+		std::cout << "DiamondTrap attack function called" << std::endl;
 	ScavTrap::attack(target);
 }
 

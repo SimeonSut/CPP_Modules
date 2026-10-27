@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 18:25:57 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/27 13:27:11 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 21:05:05 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int	main(void)
 {
 	std::cout	<< "----------ClapTrap tests launched !!!----------\n\n"
 				<< "----------Claptraps declarations tests!----------\n\n";
-
 	ClapTrap a;
-
 	std::cout	<< "\n----------Claptrap actions tests!!----------\n\n";
 	a.takeDamage(5);
 	std::cout	<< "\n----------Scavtrap actions tests!!----------\n\n";
@@ -51,18 +49,20 @@ int	main(void)
 	f.attack(g.getName());
 	std::cout	<< "\n----------DiamondTrap actions tests!!----------\n\n";
 	DiamondTrap alpha;
+	DiamondTrap beta("Dart Vader");
 	alpha.whoAmI();
 	alpha.takeDamage(100);
 	alpha.beRepaired(15);
-
 	alpha.attack("Emperor Palpatine");
 	alpha.attack("Emperor Palpatine");
 	alpha.attack("Emperor Palpatine");
 	alpha.attack("Emperor Palpatine");
 	alpha.attack("Emperor Palpatine");
 	alpha.attack("Emperor Palpatine");
-	alpha.attack("Emperor Palpatine");
-	alpha.attack("Emperor Palpatine");
+	alpha.attack(beta.getClapName());
+	alpha.attack(beta.getName());
+	alpha.setClapName("Darth Malgus");
+	alpha.whoAmI();
 	std::cout << std::endl;
 	return 0;
 }

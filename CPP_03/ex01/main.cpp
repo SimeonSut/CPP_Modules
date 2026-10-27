@@ -6,15 +6,11 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 18:25:57 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/23 18:21:33 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 20:07:14 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
-
-/********TO ENABLE DEBUGING MODE, COMPILE WITH THE COMMAND BELOW***********
-* c++ -Wall -Wextra -Werror -D DEBUG=1 -std=c++98
-******************************************************************************/
 
 int	main(void)
 {

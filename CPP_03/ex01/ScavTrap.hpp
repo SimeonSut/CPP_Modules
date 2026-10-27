@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 21:39:45 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/23 18:13:26 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 20:00:58 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,19 @@ class ScavTrap : public ClapTrap
 
 		ScavTrap();
 		ScavTrap ( std::string newName );
+		ScavTrap( const ScavTrap & src );
 		~ScavTrap();
+
+		ScavTrap & operator=( const ScavTrap & src );
 
 		void attack( const std::string& target );
 		void guardGate();
 
 	private:
+
+		static const short ScavHitPoints = 100;
+		static const short ScavEnergyPoints = 50;
+		static const short ScavAttackDamage = 20;
 
 };
 

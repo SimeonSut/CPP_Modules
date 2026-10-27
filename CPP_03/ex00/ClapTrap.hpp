@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 18:26:00 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/27 17:38:00 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 17:51:23 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ class ClapTrap
 
 	private:
 
-		static const short ClapHitPoints = 100;
-		static const short ClapEnergyPoints = 100;
-		static const short ClapAttackDamage = 30;
+		static const short ClapHitPoints = 10;
+		static const short ClapEnergyPoints = 10;
+		static const short ClapAttackDamage = 0;
 
 };
 

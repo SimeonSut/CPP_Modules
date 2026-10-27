@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 19:57:47 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/24 21:51:24 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 20:50:52 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ class DiamondTrap : public ScavTrap, public FragTrap
 	public:
 
 		DiamondTrap();
-		DiamondTrap( const std::string & newName );
+		DiamondTrap ( std::string newName );
+		DiamondTrap( const DiamondTrap & src );
 		~DiamondTrap();
+
+		DiamondTrap & operator=( const DiamondTrap & src );
 
 		void setClapName( std::string newName );
 		std::string getClapName() const;
