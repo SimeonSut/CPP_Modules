@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 18:25:57 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/23 20:20:27 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 13:27:11 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,19 @@ int	main(void)
 	e.takeDamage(100);
 	f.attack(g.getName());
 	std::cout	<< "\n----------DiamondTrap actions tests!!----------\n\n";
+	DiamondTrap alpha;
+	alpha.whoAmI();
+	alpha.takeDamage(100);
+	alpha.beRepaired(15);
+
+	alpha.attack("Emperor Palpatine");
+	alpha.attack("Emperor Palpatine");
+	alpha.attack("Emperor Palpatine");
+	alpha.attack("Emperor Palpatine");
+	alpha.attack("Emperor Palpatine");
+	alpha.attack("Emperor Palpatine");
+	alpha.attack("Emperor Palpatine");
+	alpha.attack("Emperor Palpatine");
 	std::cout << std::endl;
 	return 0;
 }

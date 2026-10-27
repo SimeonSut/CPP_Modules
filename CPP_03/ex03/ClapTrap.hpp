@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 18:26:00 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/23 17:48:51 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/24 21:22:20 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ class ClapTrap
 //--------------------SETTERS--------------------
 
 		void setName( const std::string & newName );
-		void setHitPoints( const short & newHitPoints );
-		void setEnergyPoints( const short & newEnergyPoints );
-		void setAttackDamage( const short & newAttackDamage );
+		void setHitPoints( const short newHitPoints );
+		void setEnergyPoints( const short newEnergyPoints );
+		void setAttackDamage( const short newAttackDamage );
 
 //--------------------ACTIONS--------------------
 

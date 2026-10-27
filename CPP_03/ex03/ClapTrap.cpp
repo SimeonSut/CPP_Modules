@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 18:25:58 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/23 18:13:49 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 14:21:45 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,22 @@
 
 ClapTrap::ClapTrap() : name("NoName"), HitPoints(10), EnergyPoints(10), AttackDamage(0)
 {
-	if (DEBUG)
-		std::cout << "Constructor called" << std::endl;
+	std::cout << "Constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap( std::string newName ) : name(newName), HitPoints(10), EnergyPoints(10), AttackDamage(0)
 {
-	if (DEBUG)
-		std::cout << "Constructor with newName parameter " << newName << " called" << std::endl;
+	std::cout << "Constructor with newName parameter " << newName << " called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap & src) : name(src.getName()), HitPoints(src.getHitPoints()), EnergyPoints(src.getEnergyPoints()), AttackDamage(src.getAttackDamage())
 {
-	if (DEBUG)
-		std::cout << "Copy Constructor called" << std::endl;
+	std::cout << "Copy Constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	if (DEBUG)
-		std::cout << "Destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
 ClapTrap & ClapTrap::operator=(const ClapTrap & src)
@@ -86,21 +82,21 @@ void ClapTrap::setName( const std::string & newName )
 	name = newName;
 }
 
-void ClapTrap::setHitPoints( const short & newHitPoints )
+void ClapTrap::setHitPoints( const short newHitPoints )
 {
 	if (DEBUG)
 		std::cout << "setHitPoints called" << std::endl;
 	HitPoints = newHitPoints;
 }
 
-void ClapTrap::setEnergyPoints( const short & newEnergyPoints )
+void ClapTrap::setEnergyPoints( const short newEnergyPoints )
 {
 	if (DEBUG)
 		std::cout << "setEnergyPoints called" << std::endl;
 	EnergyPoints = newEnergyPoints;
 }
 
-void ClapTrap::setAttackDamage( const short & newAttackDamage )
+void ClapTrap::setAttackDamage( const short newAttackDamage )
 {
 	if (DEBUG)
 		std::cout << "setAttackDamage called" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 19:05:44 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/23 19:42:41 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/24 21:31:21 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 	public:
 
@@ -25,7 +25,12 @@ class FragTrap : public ClapTrap
 
 		void highFivesGuys(void);
 
-	private:
+	protected:
+
+		static const short FragHitPoints = 100;
+		static const short FragEnergyPoints = 100;
+		static const short FragAttackDamage = 30;
+
 };
 
 #endif

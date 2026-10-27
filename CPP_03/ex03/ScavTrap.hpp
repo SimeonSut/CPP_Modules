@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 21:39:45 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/23 19:09:56 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/24 21:31:10 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
 
 	public:
@@ -27,7 +27,11 @@ class ScavTrap : public ClapTrap
 		void attack( const std::string& target );
 		void guardGate();
 
-	private:
+	protected:
+
+		static const short ScavHitPoints = 100;
+		static const short ScavEnergyPoints = 50;
+		static const short ScavAttackDamage = 20;
 
 };
 
