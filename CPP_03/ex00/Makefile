@@ -1,24 +1,37 @@
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-SRC = main.cpp ClapTrap.cpp
+DEBUG_FLAGS = -D DEBUG=1
+
+SRC = ClapTrap.cpp main.cpp
 
 HDR = ClapTrap.hpp
 
 NAME = test
 
+DEBUG_NAME = debug_test
+
 all: $(NAME)
+
+debug : $(DEBUG_NAME)
 
 $(NAME): $(SRC) $(HDR)
 	@$(CC) $(FLAGS) $(SRC) -o $(NAME)
 
+$(DEBUG_NAME): $(SRC) $(HDR)
+	@$(CC) $(FLAGS) $(DEBUG_FLAGS) $(SRC) -o $(DEBUG_NAME)
+
 clean:
 	@rm -f $(NAME)
+	@rm -f $(DEBUG_NAME)
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f $(DEBUG_NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+redebug: fclean debug
+
+.PHONY: all debug clean fclean re redebug

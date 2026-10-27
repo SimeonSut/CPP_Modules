@@ -6,34 +6,30 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 18:25:58 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/22 21:32:15 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/27 17:38:20 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : name("NoName"), HitPoints(10), EnergyPoints(10), AttackDamage(0)
+ClapTrap::ClapTrap() : name("NoName"), HitPoints(ClapHitPoints), EnergyPoints(ClapEnergyPoints), AttackDamage(ClapAttackDamage)
 {
-	if (DEBUG)
-		std::cout << "Constructor called" << std::endl;
+	std::cout << "Constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap( std::string newName ) : name(newName), HitPoints(10), EnergyPoints(10), AttackDamage(0)
 {
-	if (DEBUG)
-		std::cout << "Constructor with newName parameter" << newName << " called" << std::endl;
+	std::cout << "Constructor with newName parameter" << newName << " called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap & src) : name(src.getName()), HitPoints(src.getHitPoints()), EnergyPoints(src.getEnergyPoints()), AttackDamage(src.getAttackDamage())
 {
-	if (DEBUG)
-		std::cout << "Copy Constructor called" << std::endl;
+	std::cout << "Copy Constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	if (DEBUG)
-		std::cout << "Destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
 ClapTrap & ClapTrap::operator=(const ClapTrap & src)
@@ -114,6 +110,8 @@ void ClapTrap::attack(const std::string& target)
 {
 	short currentEnergyPoints = getEnergyPoints();
 
+	if (DEBUG)
+		std::cout << "attack function called" << std::endl;
 	if (target.size() == 0)
 	{
 		std::cout << "invalid target input!!" << std::endl;
@@ -134,6 +132,8 @@ void ClapTrap::takeDamage(unsigned int amount)
 {
 	short currentHitPoints = getHitPoints();
 
+	if (DEBUG)
+		std::cout << "takeDamage function called" << std::endl;
 	if (amount == 0)
 	{
 		std::cout << "invalid damage amount input!!" << std::endl;
@@ -160,6 +160,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 	short currentEnergyPoints = getEnergyPoints();
 	short currentHitPoints = getHitPoints();
 
+	if (DEBUG)
+		std::cout << "beRepaired function called" << std::endl;
 	if (amount == 0)
 	{
 		std::cout << "invalid repair amount input!!" << std::endl;
