@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 14:44:48 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/28 23:24:32 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/29 00:05:19 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ void MateriaSource::learnMateria( AMateria* src )
 	for (short i = 0; i < 4; i++)
 	{
 		if (knownMaterias[i] == NULL)
+		{
 			knownMaterias[i] = src;
+			break;
+		}
 	}
 }
 
@@ -79,7 +82,7 @@ AMateria* MateriaSource::createMateria( std::string const & type )
 	for (short i = 0; i < 4; i++)
 	{
 		if (knownMaterias[i] == NULL)
-			continue ;
+			break;
 		if (type.compare("ice") == 0 && knownMaterias[i]->getType().compare(type) == 0)
 			return new Ice();
 		else if (type.compare("cure") == 0 && knownMaterias[i]->getType().compare(type) == 0)
