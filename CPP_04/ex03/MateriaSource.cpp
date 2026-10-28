@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 14:44:48 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/28 21:57:07 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/28 23:24:32 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-MateriaSource::MateriaSource() : IMateriaSource()
+MateriaSource::MateriaSource()
 {
 	for (short i = 0; i < 4; i++)
 		knownMaterias[i] = NULL;
 }
 
-MateriaSource::MateriaSource( const MateriaSource & src ) : IMateriaSource()
+MateriaSource::MateriaSource( MateriaSource const & src )
 {
 	for (short i = 0; i < 4; i++)
 	{

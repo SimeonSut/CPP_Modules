@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 21:08:20 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/28 21:57:37 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/28 23:24:48 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 
-Character::Character() : ICharacter(), name("NoName")
+Character::Character() : name("NoName")
 {
 	for (short i = 0; i < 4; i++)
 		inventory[i] = NULL;
 }
 
-Character::Character( Character const & src ) : ICharacter(), name(src.getName())
+Character::Character( Character const & src ) : name(src.getName())
 {
 	for (short i = 0; i < 4; i++)
 	{
 		if (inventory[i] != NULL)
 			delete inventory[i];
-		if (src.inventory[i] = NULL)
+		if (src.inventory[i] == NULL)
 			inventory[i] = NULL;
 		else if (src.inventory[i]->getType().compare("cure") == 0)
 			inventory[i] = new Cure();
@@ -35,7 +35,7 @@ Character::Character( Character const & src ) : ICharacter(), name(src.getName()
 	}
 }
 
-Character::Character( std::string const & newName ) : ICharacter(), name(newName)
+Character::Character( std::string const & newName ) : name(newName)
 {
 	for (short i = 0; i < 4; i++)
 		inventory[i] = NULL;

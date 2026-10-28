@@ -6,13 +6,13 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 17:57:21 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/28 21:14:58 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/28 23:27:17 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
-#include "IMateriaSource.hpp"
-#include "ICharacters.hpp"
+//#include "AMateria.hpp"
+//#include "IMateriaSource.hpp"
+//#include "ICharacters.hpp"
 #include "MateriaSource.hpp"
 #include "Character.hpp"
 #include "Ice.hpp"

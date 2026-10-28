@@ -6,14 +6,14 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 19:45:03 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/28 14:28:48 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/28 23:33:54 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMATERIASOURCE_HPP
 #define IMATERIASOURCE_HPP
 
-#include "AMateria.hpp"
+class AMateria;
 
 class IMateriaSource
 {

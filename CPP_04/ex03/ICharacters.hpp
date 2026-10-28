@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 18:03:27 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/28 20:48:58 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/28 23:33:17 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #define ICHARACTER_HPP
 
 #include <iostream>
-#include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {
