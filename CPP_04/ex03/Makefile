@@ -4,9 +4,9 @@ FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 DEBUG_FLAGS = -D DEBUG=1
 
-SRC = AMatiera.cpp ICharacters.cpp main.cpp
+SRC = main.cpp Cure.cpp Ice.cpp MateriaSource.cpp Character.cpp AMateria.cpp
 
-HDR = AMateria.hpp ICharacters.hpp
+HDR = Cure.hpp Ice.hpp MateriaSource.hpp Character.hpp AMateria.hpp IMateriaSource.hpp ICharacters.hpp
 
 NAME = test
 

@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 18:52:46 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/26 21:01:57 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/28 18:21:42 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,20 @@
 #define CURE_HPP
 
 #include "AMateria.hpp"
+#include "ICharacters.hpp"
 
-class Cure : public AMateria
+class Cure : virtual public AMateria
 {
 	public:
 
 		Cure();
+		Cure( Cure const & src );
 		Cure( std::string const & type );
 		~Cure();
 
-		AMateria* clone() const override;
+		Cure & operator=( Cure const & src );
+
+		AMateria* clone() const;
 		void use( ICharacter& target );
 
 	protected:

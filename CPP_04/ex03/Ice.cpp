@@ -6,16 +6,19 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 18:52:43 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/26 20:57:55 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/28 21:55:07 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
-Ice::Ice() : type("ice")
+Ice::Ice() : AMateria(), type("ice")
 {}
 
-Ice::Ice( std::string const & type ) : type(type)
+Ice::Ice( Ice const & src ) : AMateria(), type(src.getType())
+{}
+
+Ice::Ice( std::string const & type ) : AMateria(), type(type)
 {}
 
 Ice::~Ice()
@@ -41,4 +44,6 @@ AMateria* Ice::clone() const
 }
 
 void Ice::use( ICharacter& target )
-{}
+{
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+}

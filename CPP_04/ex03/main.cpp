@@ -6,18 +6,22 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 17:57:21 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/27 22:22:11 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/28 21:14:58 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "IMateriaSource.hpp"
+#include "ICharacters.hpp"
 #include "MateriaSource.hpp"
 #include "Character.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 
 int main(void)
 {
 	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice()); 
+	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");
 	AMateria* tmp;

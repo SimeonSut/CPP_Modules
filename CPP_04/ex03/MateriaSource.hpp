@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/28 14:45:03 by ssutarmi          #+#    #+#             */
+/*   Updated: 2026/10/28 18:21:23 by ssutarmi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MATERIASOURCE_HPP
 # define MATERIASOURCE_HPP
 
@@ -6,7 +18,7 @@
 
 # include "IMateriaSource.hpp"
 
-class MateriaSource : public IMateriaSource
+class MateriaSource : virtual public IMateriaSource
 {
 
 	public:
@@ -15,10 +27,10 @@ class MateriaSource : public IMateriaSource
 		MateriaSource( MateriaSource const & src );
 		~MateriaSource();
 
-		void learnMateria( AMateria* src ) override;
-		AMateria* createMateria( std::string const & type ) override;
+		MateriaSource & operator=( MateriaSource const & src );
 
-		MateriaSource &		operator=( MateriaSource const & rhs );
+		void learnMateria( AMateria* src );
+		AMateria* createMateria( std::string const & type );
 
 	private:
 
