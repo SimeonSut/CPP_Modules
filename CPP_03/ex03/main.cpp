@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 18:25:57 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/27 21:05:05 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/28 13:55:10 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ int	main(void)
 	f.attack(g.getName());
 	std::cout	<< "\n----------DiamondTrap actions tests!!----------\n\n";
 	DiamondTrap alpha;
+	std::cout << "alpha HitPoints value is : " << alpha.getHitPoints() << "\n";
+	std::cout << "alpha Energy value is : " << alpha.getEnergyPoints() << "\n";
+	std::cout << "alpha Attack value is : " << alpha.getAttackDamage() << "\n";
 	DiamondTrap beta("Dart Vader");
 	alpha.whoAmI();
 	alpha.takeDamage(100);

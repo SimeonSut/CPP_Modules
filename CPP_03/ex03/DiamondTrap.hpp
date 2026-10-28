@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 19:57:47 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/27 20:50:52 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/28 13:49:24 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-class DiamondTrap : public ScavTrap, public FragTrap
+class DiamondTrap : virtual public ScavTrap, virtual public FragTrap
 {
 	public:
 
