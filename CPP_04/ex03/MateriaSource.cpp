@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 14:44:48 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/29 00:05:19 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/29 14:48:15 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@
 
 MateriaSource::MateriaSource()
 {
+	if (DEBUG)
+		std::cout << "MateriaSource Constructor called" << std::endl;
 	for (short i = 0; i < 4; i++)
 		knownMaterias[i] = NULL;
 }
 
 MateriaSource::MateriaSource( MateriaSource const & src )
 {
+	if (DEBUG)
+		std::cout << "MateriaSource Copy Constructor called" << std::endl;
 	for (short i = 0; i < 4; i++)
 	{
 		if (knownMaterias[i] != NULL)
@@ -41,12 +45,16 @@ MateriaSource::MateriaSource( MateriaSource const & src )
 
 MateriaSource::~MateriaSource()
 {
+	if (DEBUG)
+		std::cout << "MateriaSource Destructor called" << std::endl;
 	for (short i = 0; i < 4 && knownMaterias[i] != NULL; i++)
 		delete knownMaterias[i];
 }
 
 MateriaSource & MateriaSource::operator=( MateriaSource const & src )
 {
+	if (DEBUG)
+		std::cout << "MateriaSource Assignement operator overload called" << std::endl;
 	for (short i = 0; i < 4; i++)
 	{
 		if (knownMaterias[i] != NULL)
@@ -67,6 +75,8 @@ MateriaSource & MateriaSource::operator=( MateriaSource const & src )
 
 void MateriaSource::learnMateria( AMateria* src )
 {
+	if (DEBUG)
+		std::cout << "MateriaSource learnMateria function called" << std::endl;
 	for (short i = 0; i < 4; i++)
 	{
 		if (knownMaterias[i] == NULL)
@@ -79,6 +89,8 @@ void MateriaSource::learnMateria( AMateria* src )
 
 AMateria* MateriaSource::createMateria( std::string const & type )
 {
+	if (DEBUG)
+		std::cout << "MateriaSource createMateria function called" << std::endl;
 	for (short i = 0; i < 4; i++)
 	{
 		if (knownMaterias[i] == NULL)
@@ -90,5 +102,10 @@ AMateria* MateriaSource::createMateria( std::string const & type )
 	}
 	return NULL;
 }
+
+// std::string const & MateriaSource::getMateria( short idx ) const
+// {
+// 	return knownMaterias[idx]->getType();
+// }
 
 /* ************************************************************************** */

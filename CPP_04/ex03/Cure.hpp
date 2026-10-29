@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 18:52:46 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/28 23:35:00 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/29 13:42:48 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Cure : virtual public AMateria
 
 		Cure();
 		Cure( Cure const & src );
-		Cure( std::string const & type );
+		Cure( std::string const & newType );
 		~Cure();
 
 		Cure & operator=( Cure const & src );
@@ -31,9 +31,6 @@ class Cure : virtual public AMateria
 		void use( ICharacter& target );
 
 	protected:
-
-		std::string type;
-
 	private:
 };
 

@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 21:08:21 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/28 23:19:33 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/29 15:58:19 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 #include "AMateria.hpp"
 #include "ICharacters.hpp"
+
+typedef struct colector
+{
+	AMateria 			*garbage;
+	struct colector		*next;
+}						t_colector;
 
 class Character : public ICharacter
 {
@@ -34,7 +40,9 @@ class Character : public ICharacter
 
 	protected:
 
-		AMateria* inventory[4];
+		AMateria* 	inventory[4];
+		t_colector*	garbage_head;
+		t_colector*	garbage_colector;
 
 	private:
 

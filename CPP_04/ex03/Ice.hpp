@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 18:52:48 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/28 23:34:58 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/29 13:42:44 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Ice : virtual public AMateria
 
 		Ice();
 		Ice( Ice const & src );
-		Ice( std::string const & type );
+		Ice( std::string const & newType );
 		~Ice();
 
 		Ice & operator=( Ice const & src );
@@ -31,9 +31,6 @@ class Ice : virtual public AMateria
 		void use( ICharacter& target );
 
 	protected:
-
-		std::string type;
-
 	private:
 };
 

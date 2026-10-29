@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 14:45:03 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/28 23:34:36 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/29 14:08:23 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class MateriaSource : virtual public IMateriaSource
 
 		void learnMateria( AMateria* src );
 		AMateria* createMateria( std::string const & type );
+//		std::string const & getMateria( short idx ) const;
 
 	private:
 
