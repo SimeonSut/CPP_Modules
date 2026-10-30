@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:14 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/30 12:39:24 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/30 18:34:40 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ class Bureaucrat
 		Bureaucrat	&	operator--( void );
 		Bureaucrat		operator--( int );
 
-		int		out_of_range_thrower( Bureaucrat const & src, short grade );
+		void	out_of_range_thrower( Bureaucrat const & src, short grade );
 
-		void	GradeTooHighException( std::string name );
-		void	GradeTooLowException( std::string name );
 		short	getGrade() const;
 		std::string const & getName() const;
 
@@ -50,6 +48,34 @@ class Bureaucrat
 
 		short				grade;
 		std::string const	name;
+
+};
+
+class GradeTooHighException : public std::exception
+{
+	public:
+
+		GradeTooHighException( std::string const & newName );
+		~GradeTooHighException() throw();
+		virtual const char* what() const throw();
+
+	private:
+
+		std::string name;
+
+};
+
+class GradeTooLowException : public std::exception
+{
+	public:
+
+		GradeTooLowException( std::string const & newName );
+		~GradeTooLowException() throw();
+		virtual const char* what() const throw();
+
+	private:
+
+		std::string name;
 
 };
 

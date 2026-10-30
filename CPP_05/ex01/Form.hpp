@@ -12,16 +12,18 @@ class Form
 		Form( Form const & src );
 		~Form();
 
-		Form &		operator=( Form const & src );
+		Form &	operator=( Form const & src );
 
-		std::string		getName() const;
+		std::string	getName() const;
 		bool const &	get_is_signed() const;
 		short const &	get_grade_to_sign() const;
 		short const &	get_grade_to_exec() const;
 
-		int				out_of_range_thrower( Form const & src, short grade );
-		void			GradeTooHighException( std::string name );
-		void			GradeTooLowException( std::string name );
+		void	beSigned( Bureaucrat const & signer );
+
+		int		out_of_range_thrower( Form const & src, short grade );
+		void	GradeTooHighException( std::string name );
+		void	GradeTooLowException( std::string name );
 
 	protected:
 	private:

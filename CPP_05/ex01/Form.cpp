@@ -41,6 +41,16 @@ std::ostream &	operator<<( std::ostream & outflow, Form const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
+void Form::beSigned( Bureaucrat const & signer )
+{
+	if ( is_signed == true )
+		return ;
+	if ( signer.getGrade() <= get_grade_to_sign() )
+		is_signed = true;
+	else
+		GradeTooLowException();
+}
+
 int	Form::out_of_range_thrower( Form const & src, short grade )
 {
 	if (DEBUG)

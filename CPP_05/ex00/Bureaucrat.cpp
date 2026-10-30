@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:15 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/30 12:39:16 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/30 21:39:56 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Bureaucrat::Bureaucrat() : grade(0), name("NoName")
+Bureaucrat::Bureaucrat() : grade(1), name("NoName")
 {
 	if (DEBUG)
 		std::cout << "Bureaucrat Constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat( std::string const & newName, short const & newGrade ) : grade(newGrade), name(newName)
+Bureaucrat::Bureaucrat( std::string const & newName, short const & newGrade ) : name(newName)
 {
 	if (DEBUG)
 		std::cout << "Bureaucrat Constructor with newGrade parameter called" << std::endl;
 	out_of_range_thrower( *this, newGrade );
-	return ;
+	grade = newGrade;
 }
 
 Bureaucrat::Bureaucrat( const Bureaucrat & src ) : grade(src.getGrade()), name(src.getName())
@@ -54,7 +54,6 @@ Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & src )
 {
 	if (DEBUG)
 		std::cout << "Bureaucrat assignement overload called" << std::endl;
-	//name is a constat and is therefore not assigned
 	grade = src.getGrade();
 	return *this;
 }
@@ -64,8 +63,7 @@ Bureaucrat&	Bureaucrat::operator++( void )
 {
 	if (DEBUG)
 		std::cout << "Bureaucrat grade pre-incrementation called" << std::endl;
-	if (out_of_range_thrower( *this, grade - 1 ) == 1)
-		return *this;
+	out_of_range_thrower( *this, grade - 1 );
 	grade--;
 	return *this;
 }
@@ -74,8 +72,7 @@ Bureaucrat	Bureaucrat::operator++( int )
 {
 	if (DEBUG)
 		std::cout << "Bureaucrat grade post-incrementation called" << std::endl;
-	if (out_of_range_thrower( *this, grade - 1 ) == 1)
-		return *this;
+	out_of_range_thrower( *this, grade - 1 );
 	Bureaucrat tmp(getName(), getGrade());
 	grade--;
 	return tmp;
@@ -85,8 +82,7 @@ Bureaucrat&	Bureaucrat::operator--( void )
 {
 	if (DEBUG)
 		std::cout << "Bureaucrat grade pre-decrementation called" << std::endl;
-	if (out_of_range_thrower( *this, grade + 1 ) == 1)
-		return *this;
+	out_of_range_thrower( *this, grade + 1 );
 	grade++;
 	return *this;
 }
@@ -96,41 +92,31 @@ Bureaucrat	Bureaucrat::operator--( int )
 	if (DEBUG)
 		std::cout << "Bureaucrat grade post-decrementation called" << std::endl;
 	Bureaucrat tmp(getName(), getGrade());
-	if (out_of_range_thrower( *this, grade + 1 ) == 1)
-		return *this;
+	out_of_range_thrower( *this, grade + 1 );
 	grade++;
 	return tmp;
+}
+
+std::ostream & operator<<( std::ostream & flowstream, Bureaucrat const & src )
+{
+	if (DEBUG)
+		std::cout << " called" << std::endl;
+	flowstream << src.getName() << ", bureaucrat grade " << src.getGrade();
+	return flowstream;
 }
 
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
-int	Bureaucrat::out_of_range_thrower( Bureaucrat const & src, short grade )
+void	Bureaucrat::out_of_range_thrower( Bureaucrat const & src, short grade )
 {
 	if (DEBUG)
-		std::cout << "Form's out_of_range checker function called" << std::endl;
+		std::cout << "Bureaucrat's out_of_range checker function called" << std::endl;
 	if (grade > 150)
-	{
-		GradeTooLowException( src.getName() );
-		return 1;
-	}
-	else if (grade < 0)
-	{
-		GradeTooHighException( src.getName() );
-		return 1;
-	}
-	return 0;
-}
-
-void Bureaucrat::GradeTooHighException( std::string name )
-{
-	throw std::out_of_range( name + " Form's grade is too high!" );
-}
-
-void Bureaucrat::GradeTooLowException( std::string name )
-{
-	throw std::out_of_range( name + " Form's grade is too low!" );
+		throw GradeTooLowException( src.getName() );
+	else if (grade < 1)
+		throw GradeTooHighException( src.getName() );
 }
 
 /*
@@ -151,14 +137,71 @@ std::string const & Bureaucrat::getName() const
 	return name;
 }
 
+
 /*
-** --------------------------------- FLOWSTREAM OVERLOAD ---------------------------------
+** --------------------------------- EXCEPTION DERIVED CLASSES ---------------------------------
 */
 
-std::ostream & operator<<( std::ostream & flowstream, Bureaucrat const & src )
+//------------------------------------------HIGH-------------------------------------------------------
+
+GradeTooHighException::GradeTooHighException( std::string const & newName ) : name(newName)
 {
 	if (DEBUG)
-		std::cout << " called" << std::endl;
-	flowstream << src.getName() << ", bureaucrat grade " << src.getGrade();
-	return flowstream;
+	{
+		std::cout << "GradeTooHighException Constructor called" << std::endl;
+	}
+	name.append(" Form's grade is too high!");
+	if (DEBUG)
+	{
+		std::cout << "newName is : " << newName << std::endl;
+		std::cout << "name is : " << name << std::endl;
+	}
+}
+
+GradeTooHighException::~GradeTooHighException() throw()
+{
+	if (DEBUG)
+		std::cout << "GradeTooHighException Destructor called" << std::endl;
+}
+
+const char* GradeTooHighException::what() const throw()
+{
+	if (DEBUG)
+	{
+		std::cout << "GradeTooHighException what function overload called\n";
+		std::cout << "name of class is : " << name;
+	}
+	return name.c_str();;
+}
+
+//------------------------------------------LOW-------------------------------------------------------
+
+GradeTooLowException::GradeTooLowException( std::string const & newName ) : name(newName)
+{
+	if (DEBUG)
+	{
+		std::cout << "GradeTooLowException Constructor called" << std::endl;
+	}
+	name.append(" Form's grade is too low!");
+	if (DEBUG)
+	{
+		std::cout << "newName is : " << newName << std::endl;
+		std::cout << "name is : " << name << std::endl;
+	}
+}
+
+GradeTooLowException::~GradeTooLowException() throw()
+{
+	if (DEBUG)
+		std::cout << "GradeTooLowException Destructor called" << std::endl;
+}
+
+const char* GradeTooLowException::what() const throw()
+{
+	if (DEBUG)
+	{
+		std::cout << "GradeTooLowException what function overload called\n";
+		std::cout << "name of class is : " << name;
+	}
+	return name.c_str();
 }
