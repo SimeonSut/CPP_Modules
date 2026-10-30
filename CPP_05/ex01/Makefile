@@ -4,9 +4,9 @@ FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 DEBUG_FLAGS = -D DEBUG=1
 
-SRC = main.cpp Bureaucrat.cpp
+SRC = main.cpp Bureaucrat.cpp Form.cpp
 
-HDR = Bureaucrat.hpp
+HDR = Bureaucrat.hpp Form.hpp
 
 NAME = test
 

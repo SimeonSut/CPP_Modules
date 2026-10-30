@@ -9,6 +9,7 @@ class Form
 	public:
 
 		Form();
+		Form( std::string const & name, bool const & is_signed, short const & grade_to_sign, short const & grade_to_exec );
 		Form( Form const & src );
 		~Form();
 
@@ -21,9 +22,36 @@ class Form
 
 		void	beSigned( Bureaucrat const & signer );
 
-		int		out_of_range_thrower( Form const & src, short grade );
-		void	GradeTooHighException( std::string name );
-		void	GradeTooLowException( std::string name );
+		void	out_of_range_thrower( Form const & src, short const & grade_to_sign, short const & grade_to_exec );
+
+		class GradeTooHighException : public std::exception
+		{
+			public:
+
+				GradeTooHighException( std::string const & Error );
+				~GradeTooHighException() throw();
+				virtual const char* what() const throw();
+
+			private:
+
+				std::string error_name;
+
+		};
+
+		class GradeTooLowException : public std::exception
+		{
+
+			public:
+
+				GradeTooLowException( std::string const & Error );
+				~GradeTooLowException() throw();
+				virtual const char* what() const throw();
+
+			private:
+
+				std::string error_name;
+
+		};
 
 	protected:
 	private:
