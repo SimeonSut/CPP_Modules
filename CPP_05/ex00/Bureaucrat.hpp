@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:14 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/30 22:16:08 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/30 22:29:57 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ class Bureaucrat
 		{
 			public:
 
-				GradeTooHighException( std::string const & newOne );
+				GradeTooHighException( std::string const & Error );
 				~GradeTooHighException() throw();
 				virtual const char* what() const throw();
 
@@ -61,7 +61,7 @@ class Bureaucrat
 		{
 			public:
 
-				GradeTooLowException( std::string const & newOne );
+				GradeTooLowException( std::string const & Error );
 				~GradeTooLowException() throw();
 				virtual const char* what() const throw();
 

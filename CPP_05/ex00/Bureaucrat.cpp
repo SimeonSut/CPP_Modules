@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:15 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/30 22:17:19 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/30 22:32:34 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ Bureaucrat	Bureaucrat::operator--( int )
 std::ostream & operator<<( std::ostream & flowstream, Bureaucrat const & src )
 {
 	if (DEBUG)
-		std::cout << " called" << std::endl;
+		std::cout << "Operator << overload called" << std::endl;
 	flowstream << src.getName() << ", bureaucrat grade " << src.getGrade();
 	return flowstream;
 }
@@ -144,21 +144,21 @@ std::string const & Bureaucrat::getName() const
 
 //------------------------------------------HIGH-------------------------------------------------------
 
-Bureaucrat::GradeTooHighException( std::string const & newOne ) : error_name(newOne)
+Bureaucrat::GradeTooHighException::GradeTooHighException( std::string const & Error ) : error_name(Error)
 {
 	if (DEBUG)
 	{
 		std::cout << "GradeTooHighException Constructor called" << std::endl;
 	}
-	error_name.append(" Form's grade is too high!");
+	error_name.append(" Bureaucrat's grade is too high!");
 	if (DEBUG)
 	{
-		std::cout << "newName is : " << newOne << std::endl;
+		std::cout << "newName is : " << Error << std::endl;
 		std::cout << "name is : " << error_name << std::endl;
 	}
 }
 
-Bureaucrat::~GradeTooHighException() throw()
+Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
 {
 	if (DEBUG)
 		std::cout << "GradeTooHighException Destructor called" << std::endl;
@@ -171,12 +171,12 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 		std::cout << "GradeTooHighException what function overload called\n";
 		std::cout << "name of class is : " << error_name;
 	}
-	return error_name.c_str();;
+	return error_name.c_str();
 }
 
 //------------------------------------------LOW-------------------------------------------------------
 
-Bureaucrat::GradeTooLowException( std::string const & newOne ) : error_name(newOne)
+Bureaucrat::GradeTooLowException::GradeTooLowException( std::string const & Error ) : error_name(Error)
 {
 	if (DEBUG)
 	{
@@ -185,12 +185,12 @@ Bureaucrat::GradeTooLowException( std::string const & newOne ) : error_name(newO
 	error_name.append(" Form's grade is too low!");
 	if (DEBUG)
 	{
-		std::cout << "newName is : " << newOne << std::endl;
+		std::cout << "newName is : " << Error << std::endl;
 		std::cout << "name is : " << error_name << std::endl;
 	}
 }
 
-Bureaucrat::~GradeTooLowException() throw()
+Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()
 {
 	if (DEBUG)
 		std::cout << "GradeTooLowException Destructor called" << std::endl;
@@ -203,5 +203,5 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 		std::cout << "GradeTooLowException what function overload called\n";
 		std::cout << "name of class is : " << error_name;
 	}
-	return name.c_str();
+	return error_name.c_str();
 }
