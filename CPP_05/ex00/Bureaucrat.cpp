@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:15 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/29 22:43:25 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/30 12:39:16 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & src )
 	return *this;
 }
 
+
 Bureaucrat&	Bureaucrat::operator++( void )
 {
 	if (DEBUG)
@@ -101,37 +102,35 @@ Bureaucrat	Bureaucrat::operator--( int )
 	return tmp;
 }
 
+/*
+** --------------------------------- METHODS ----------------------------------
+*/
+
 int	Bureaucrat::out_of_range_thrower( Bureaucrat const & src, short grade )
 {
-	std::string output_msg = src.getName();
-
 	if (DEBUG)
-		std::cout << "Bureaucrat out_of_range checker function called" << std::endl;
+		std::cout << "Form's out_of_range checker function called" << std::endl;
 	if (grade > 150)
 	{
-		throw std::out_of_range(output_msg.append("'s grade under minimum"));
+		GradeTooLowException( src.getName() );
 		return 1;
 	}
 	else if (grade < 0)
 	{
-		throw std::out_of_range(output_msg.append("'s grade over maximum"));
+		GradeTooHighException( src.getName() );
 		return 1;
 	}
 	return 0;
 }
 
-/*
-** --------------------------------- METHODS ----------------------------------
-*/
-
-void Bureaucrat::GradeTooHighException()
+void Bureaucrat::GradeTooHighException( std::string name )
 {
-	std::cout << "this grade is high low! input another one!" << std::endl;
+	throw std::out_of_range( name + " Form's grade is too high!" );
 }
 
-void Bureaucrat::GradeTooLowException()
+void Bureaucrat::GradeTooLowException( std::string name )
 {
-		std::cout << "this grade is too low! input another one!" << std::endl;
+	throw std::out_of_range( name + " Form's grade is too low!" );
 }
 
 /*
