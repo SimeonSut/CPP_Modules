@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:15 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/30 21:39:56 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/30 22:17:19 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,9 @@ void	Bureaucrat::out_of_range_thrower( Bureaucrat const & src, short grade )
 	if (DEBUG)
 		std::cout << "Bureaucrat's out_of_range checker function called" << std::endl;
 	if (grade > 150)
-		throw GradeTooLowException( src.getName() );
+		throw Bureaucrat::GradeTooLowException( src.getName() );
 	else if (grade < 1)
-		throw GradeTooHighException( src.getName() );
+		throw Bureaucrat::GradeTooHighException( src.getName() );
 }
 
 /*
@@ -144,64 +144,64 @@ std::string const & Bureaucrat::getName() const
 
 //------------------------------------------HIGH-------------------------------------------------------
 
-GradeTooHighException::GradeTooHighException( std::string const & newName ) : name(newName)
+Bureaucrat::GradeTooHighException( std::string const & newOne ) : error_name(newOne)
 {
 	if (DEBUG)
 	{
 		std::cout << "GradeTooHighException Constructor called" << std::endl;
 	}
-	name.append(" Form's grade is too high!");
+	error_name.append(" Form's grade is too high!");
 	if (DEBUG)
 	{
-		std::cout << "newName is : " << newName << std::endl;
-		std::cout << "name is : " << name << std::endl;
+		std::cout << "newName is : " << newOne << std::endl;
+		std::cout << "name is : " << error_name << std::endl;
 	}
 }
 
-GradeTooHighException::~GradeTooHighException() throw()
+Bureaucrat::~GradeTooHighException() throw()
 {
 	if (DEBUG)
 		std::cout << "GradeTooHighException Destructor called" << std::endl;
 }
 
-const char* GradeTooHighException::what() const throw()
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	if (DEBUG)
 	{
 		std::cout << "GradeTooHighException what function overload called\n";
-		std::cout << "name of class is : " << name;
+		std::cout << "name of class is : " << error_name;
 	}
-	return name.c_str();;
+	return error_name.c_str();;
 }
 
 //------------------------------------------LOW-------------------------------------------------------
 
-GradeTooLowException::GradeTooLowException( std::string const & newName ) : name(newName)
+Bureaucrat::GradeTooLowException( std::string const & newOne ) : error_name(newOne)
 {
 	if (DEBUG)
 	{
 		std::cout << "GradeTooLowException Constructor called" << std::endl;
 	}
-	name.append(" Form's grade is too low!");
+	error_name.append(" Form's grade is too low!");
 	if (DEBUG)
 	{
-		std::cout << "newName is : " << newName << std::endl;
-		std::cout << "name is : " << name << std::endl;
+		std::cout << "newName is : " << newOne << std::endl;
+		std::cout << "name is : " << error_name << std::endl;
 	}
 }
 
-GradeTooLowException::~GradeTooLowException() throw()
+Bureaucrat::~GradeTooLowException() throw()
 {
 	if (DEBUG)
 		std::cout << "GradeTooLowException Destructor called" << std::endl;
 }
 
-const char* GradeTooLowException::what() const throw()
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	if (DEBUG)
 	{
 		std::cout << "GradeTooLowException what function overload called\n";
-		std::cout << "name of class is : " << name;
+		std::cout << "name of class is : " << error_name;
 	}
 	return name.c_str();
 }
