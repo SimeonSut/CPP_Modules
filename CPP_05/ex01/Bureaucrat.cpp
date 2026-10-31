@@ -6,11 +6,12 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:15 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/30 23:46:53 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/10/31 18:38:26 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -123,20 +124,26 @@ void	Bureaucrat::signForm( Form & toSign )
 {
 	if (DEBUG)
 		std::cout << "Bureaucrat's signForm function called" << std::endl;
-
-	bool is_signed  = true;
-
+	if (toSign.get_is_signed() == true)
+	{
+		std::cout	<< "Form " << toSign.getName() << " is already signed, "
+					<< getName() << " can't sign it!" << std::endl;
+		return ;
+	}
 	try
 	{
-		toSign.beSigned();
+		toSign.beSigned( *this );
 	}
 	catch( std::exception & e )
 	{
-		std::cout << getName() << " couldn't sign form " << toSign.getName() << " because " << e.what() << std::endl;
-		is_signed = false;
+		std::cout	<< getName() << " couldn't sign form " << toSign.getName()
+					<< " because the grade of " << e.what() << std::endl;
 	}
-	if ( is_signed == true )
-		std::cout << getName() << " signed " << toSign.getName() " form" << std::endl;
+	if ( toSign.get_is_signed() == true )
+	{
+		std::cout	<< getName() << " signed " << toSign.getName()
+					<< " form" << std::endl;
+	}
 }
 
 /*

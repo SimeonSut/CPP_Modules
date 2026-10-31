@@ -42,9 +42,9 @@ Form &	Form::operator=( Form const & src )
 
 std::ostream &	operator<<( std::ostream & outflow, Form const & src )
 {
-	outflow	<< src.getName() << " Form's has the following values :\n\t"
-			<< "grade_to_signe is : " << src.get_grade_to_sign() << "\n\t"
-			<< "grade_to_exec is : " << src.get_grade_to_exec() << "\n\t"
+	outflow	<< src.getName() << " Form's has the following values :\n\n\t\t\t\t\t"
+			<< "grade_to_signe is : " << src.get_grade_to_sign() << "\n\t\t\t\t\t"
+			<< "grade_to_exec is : " << src.get_grade_to_exec() << "\n\t\t\t\t\t"
 			<< "currently, this Form is ";
 	if (src.get_is_signed() == true)
 		outflow << "signed\n";

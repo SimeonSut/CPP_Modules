@@ -26,6 +26,7 @@ class Form
 
 		class GradeTooHighException : public std::exception
 		{
+
 			public:
 
 				GradeTooHighException( std::string const & Error );
@@ -56,7 +57,7 @@ class Form
 	protected:
 	private:
 
-		std::string const & name;
+		std::string const	name;
 		bool				is_signed;
 		short const			grade_to_sign;
 		short const			grade_to_exec;
