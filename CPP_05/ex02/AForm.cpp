@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 19:02:09 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/31 21:37:35 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/01 20:47:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,23 @@
 */
 
 AForm::AForm() : name("NoName"), is_signed(false), grade_to_sign(MINIMAL_GRADE), grade_to_exec(MINIMAL_GRADE)
-{}
+{
+	if (DEBUG)
+		std::cout << "AForm Default Constructor called" << std::endl;
+}
 
 AForm::AForm( std::string const & name, bool const & is_signed, short const & grade_to_sign, short const & grade_to_exec ) :	name(name),
-																															is_signed(is_signed),
-																															grade_to_sign(grade_to_sign),
-																															grade_to_exec(grade_to_exec)
+																																is_signed(is_signed),
+																																grade_to_sign(grade_to_sign),
+																																grade_to_exec(grade_to_exec)
 {
-	out_of_range_thrower( *this, grade_to_sign, grade_to_exec );
+	if (DEBUG)
+	{
+		std::cout << "AForm Name and Parameters Constructor called" << std::endl;
+		std::cout << "Grade to sign is : " << grade_to_sign << "\n";
+		std::cout << "Grade to exec is : " << grade_to_exec << "\n";
+	}
+	out_of_range_thrower( getName(), grade_to_sign, grade_to_exec );
 }
 
 AForm::AForm( const AForm & src ) :	name(src.getName()),
@@ -32,7 +41,9 @@ AForm::AForm( const AForm & src ) :	name(src.getName()),
 									grade_to_sign(src.get_grade_to_sign()),
 									grade_to_exec(src.get_grade_to_exec())
 {
-	out_of_range_thrower( *this, grade_to_sign, grade_to_exec );
+	if (DEBUG)
+		std::cout << "AForm Copy Constructor called" << std::endl;
+	out_of_range_thrower( getName(), grade_to_sign, grade_to_exec );
 }
 
 /*
@@ -40,7 +51,10 @@ AForm::AForm( const AForm & src ) :	name(src.getName()),
 */
 
 AForm::~AForm()
-{}
+{
+	if (DEBUG)
+		std::cout << "AForm Destructor Constructor called" << std::endl;
+}
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
@@ -48,12 +62,16 @@ AForm::~AForm()
 
 AForm &	AForm::operator=( AForm const & src )
 {
+	if (DEBUG)
+		std::cout << "AForm Assignment overload called" << std::endl;
 	is_signed = src.get_is_signed();
 	return *this;
 }
 
 std::ostream &	operator<<( std::ostream & outflow, AForm const & src )
 {
+	if (DEBUG)
+		std::cout << "AForm Outstream overload called" << std::endl;
 	outflow	<< src.getName() << " Form's has the following values :\n\n\t\t\t\t\t"
 			<< "grade_to_signe is : " << src.get_grade_to_sign() << "\n\t\t\t\t\t"
 			<< "grade_to_exec is : " << src.get_grade_to_exec() << "\n\t\t\t\t\t"
@@ -71,6 +89,8 @@ std::ostream &	operator<<( std::ostream & outflow, AForm const & src )
 
 void AForm::beSigned( Bureaucrat const & signer )
 {
+	if (DEBUG)
+		std::cout << "AForm beSigned called" << std::endl;
 	if ( is_signed == true )
 		return ;
 	if ( signer.getGrade() <= get_grade_to_sign() )
@@ -79,34 +99,39 @@ void AForm::beSigned( Bureaucrat const & signer )
 		throw AForm::GradeTooLowException( signer.getName() );
 }
 
-void	AForm::out_of_range_thrower( AForm const & src, short const & grade_to_sign, short const & grade_to_exec )
+void	AForm::out_of_range_thrower( std::string error_transmission, short const & grade_to_sign, short const & grade_to_exec )
 {
-	std::string error_transmission = src.getName();
-
-	if (DEBUG)
-		std::cout << "Form's out_of_range checker function called" << std::endl;
-	if (grade_to_sign > MINIMAL_GRADE)
+	if ( DEBUG )
+		std::cout << this->getName() << "'s Form out_of_range checker function called" << std::endl;
+	if ( grade_to_sign > MINIMAL_GRADE )
 		throw AForm::GradeTooLowException( error_transmission.append(" Form's grade_to_sign") );
-	if (grade_to_exec > MINIMAL_GRADE)
+	if ( grade_to_exec > MINIMAL_GRADE )
 		throw AForm::GradeTooLowException( error_transmission.append(" Form's grade_to_exec") );
-	if (grade_to_sign < MAXIMAL_GRADE)
+	if ( grade_to_sign < MAXIMAL_GRADE )
 		throw AForm::GradeTooHighException( error_transmission.append(" Form's grade_to_sign") );
-	if (grade_to_exec < MAXIMAL_GRADE)
+	if ( grade_to_exec < MAXIMAL_GRADE )
 		throw AForm::GradeTooHighException( error_transmission.append(" Form's grade_to_exec") );
 }
 
-void	AForm::execute( Bureaucrat const & executor ) const
+void	AForm::execute( std::string error_transmission, short grade ) const
 {
-	std::string error_transmission = executor.getName();
-
-	if (get_is_signed() == false)
+	if (DEBUG)
+		std::cout << getName() << "'s AForm execute function called" << std::endl;
+	if ( get_is_signed() == false )
 	{
 		throw AForm::FormNotSignedException( error_transmission.append(" can't execute because ") );
 		return ;
 	}
-	if (executor.getGrade() > get_grade_to_exec())
+	if (DEBUG)
 	{
-		throw AForm::GradeTooLowException( error_transmission.append("'s grade to execute "));
+		std::cout	<< "executor grade is : " << grade << "\n"
+					<< "grade to execute is : " << get_grade_to_exec() << std::endl;
+	}
+	if ( grade > get_grade_to_exec() )
+	{
+		error_transmission.append( "'s grade to execute " );
+		error_transmission.append( getName() );
+		throw AForm::GradeTooLowException( error_transmission );
 		return ;
 	}
 	action();

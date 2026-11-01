@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:15 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/31 20:56:26 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/01 19:47:39 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -144,6 +144,20 @@ void	Bureaucrat::signForm( AForm & toSign )
 		std::cout	<< getName() << " signed " << toSign.getName()
 					<< " form" << std::endl;
 	}
+}
+
+void	Bureaucrat::executeForm( AForm const & form )
+{
+	try
+	{
+		form.execute( getName(), getGrade() );
+	}
+	catch ( std::exception & e )
+	{
+		std::cout << e.what() << std::endl;
+		return;
+	}
+	std::cout << getName() << " executed " << form.getName() << std::endl;
 }
 
 /*
