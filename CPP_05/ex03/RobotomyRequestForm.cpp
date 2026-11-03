@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 20:27:11 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/01 21:00:34 by marvin           ###   ########.fr       */
+/*   Updated: 2026/11/03 14:20:01 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,11 @@ void	RobotomyRequestForm::action() const
 	if (DEBUG)
 		std::cout << "RobotomyRequestForm action called" << std::endl;
 	std::cout << "DRRRRRRRRRRRRRRRRRRRRRRRR\n";
-	usleep(1000000);
+	usleep(500000);
 	std::cout << "DRRRRRRRRRRRRRRRRRRRRRRRR\n";
-	usleep(1000000);
+	usleep(500000);
 	std::cout << "DRRRRRRRRRRRRRRRRRRRRRRRR\n";
-	usleep(1000000);
+	usleep(500000);
 	if (random_bla % 2 != 0)
 		std::cout << getTarget() << " has been robotomized successfully" << std::endl;
 	else

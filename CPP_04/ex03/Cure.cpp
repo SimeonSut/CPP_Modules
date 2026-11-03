@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 18:52:41 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/29 14:48:45 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/01 14:45:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ Cure::Cure( std::string const & newType )
 {
 	if (DEBUG)
 		std::cout << "Cure newType string Constructor called" << std::endl;
+		
 	type = newType;
 }
 

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:12 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/01 22:44:16 by marvin           ###   ########.fr       */
+/*   Updated: 2026/11/03 14:37:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int	main(void)
 {
@@ -52,9 +53,9 @@ int	main(void)
 		std::cout << John << "\n";
 		std::cout << Bob << "\n";
 	}
-	usleep(100000);
+	usleep(1000000);
 	std::cout << "\n\n\n---------------ShrubberyCreationForm FORM TESTS------------------------------\n\n\n";
-	usleep(100000);
+	usleep(1000000);
 	ShrubberyCreationForm	Tree("output.txt");
 	Bureaucrat				Shrub_sign_valid_John("Valid to sign John", 145);
 	Bureaucrat				Shrub_sign_invalid_John("Invalid to sign John", 146);
@@ -71,9 +72,9 @@ int	main(void)
 	Bob.executeForm( Tree );
 	Shrub_exec_invalid_John.executeForm( Tree );
 	Shrub_exec_valid_John.executeForm( Tree );
-	usleep(100000);
+	usleep(1000000);
 	std::cout << "\n\n\n---------------RobotomyRequestForm FORM TESTS------------------------------\n\n\n";
-	usleep(100000);
+	usleep(1000000);
 	RobotomyRequestForm	operation("Bill");
 	Bureaucrat				Robot_sign_valid_John("Valid to sign John", 72);
 	Bureaucrat				Robot_sign_invalid_John("Invalid to sign John", 73);
@@ -99,9 +100,9 @@ int	main(void)
 	Bob.executeForm( operation );
 	Bob.executeForm( operation );
 	Bob.executeForm( operation );
-	usleep(100000);
+	usleep(1000000);
 	std::cout << "\n\n\n---------------PresidentialPardonForm FORM TESTS------------------------------\n\n\n";
-	usleep(100000);
+	usleep(1000000);
 	PresidentialPardonForm	pardon("Harl Filter");
 	Bureaucrat				President_sign_valid_John("Valid to sign John", 25);
 	Bureaucrat				President_sign_invalid_John("Invalid to sign John", 26);
@@ -117,8 +118,35 @@ int	main(void)
 	President_exec_invalid_John.executeForm( pardon );
 	President_exec_valid_John.executeForm( pardon );
 	Bob.executeForm( pardon );
-	usleep(100000);
+	usleep(1000000);
 	std::cout << "\n\n\n---------------INTERN TESTS------------------------------\n\n\n";
-	usleep(100000);
+	usleep(1000000);
+	Intern	newHire;
+	AForm	*test;
+
+	test = newHire.makeForm("shrubbery creation request", "testfile.txt");
+	Shrub_sign_invalid_John.signForm( *test );
+	Shrub_sign_valid_John.signForm( *test );
+	Shrub_exec_invalid_John.executeForm( *test );
+	Shrub_exec_valid_John.executeForm( *test );
+	test = newHire.makeForm("robotomy request", "Jack");
+	Robot_sign_invalid_John.signForm( *test );
+	Robot_sign_valid_John.signForm( *test );
+	Robot_exec_invalid_John.executeForm( *test );
+	Robot_exec_valid_John.executeForm( *test );
+	Robot_exec_valid_John.executeForm( *test );
+	Robot_exec_valid_John.executeForm( *test );
+	Robot_exec_valid_John.executeForm( *test );
+	test = newHire.makeForm("presidential pardon request", "testfile.txt");
+	President_sign_invalid_John.signForm( *test );
+	President_sign_valid_John.signForm( *test );
+	President_exec_invalid_John.executeForm( *test );
+	President_exec_valid_John.executeForm( *test );
+	try
+	{
+		test = newHire.makeForm("asdfasdf", "dasfsd");
+	}
+	catch ( std::exception & e)
+	{}
 	return 0;
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/03 14:00:09 by marvin            #+#    #+#             */
+/*   Updated: 2026/11/03 14:04:33 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef INTERN_HPP
 # define INTERN_HPP
 
@@ -14,13 +26,13 @@ class Intern
 		Intern();
 		~Intern();
 
-		AForm*	makeForm( std::string & FormName, std::string & FormTarget ) const;
+		AForm*	makeForm( std::string FormName, std::string FormTarget ) const;
 
 	private:
 
-		ShrubberyCreationForm*	makeShrub( std::string & FormTarget ) const;
-		RobotomyRequestForm*	makeRobot( std::string & FormTarget ) const;
-		PresidentialPardonForm*	makePresident( std::string & FormTarget ) const;
+		AForm*	makeShrub( std::string & FormTarget ) const;
+		AForm*	makeRobot( std::string & FormTarget ) const;
+		AForm*	makePresident( std::string & FormTarget ) const;
 
 };
 
