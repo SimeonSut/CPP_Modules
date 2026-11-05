@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:58:06 by marvin            #+#    #+#             */
-/*   Updated: 2026/11/04 19:07:23 by marvin           ###   ########.fr       */
+/*   Updated: 2026/11/05 20:17:48 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,22 @@
 # include <iostream>
 # include <string>
 # include <cstdlib>
+# include <cctype>
 
 # ifndef DEBUG
 # define DEBUG 0
+# endif
+
+# ifndef NONE
+# define NONE -1
+# endif
+
+# ifndef FLOAT
+# define FLOAT 1
+# endif
+
+# ifndef DOUBLE
+# define DOUBLE 2
 # endif
 
 /*
@@ -33,8 +46,8 @@ class ScalarConverter
 	public:
 
 		ScalarConverter();
-//		ScalarConverter( ScalarConverter const & src );
-		~ScalarConverter();
+		ScalarConverter( ScalarConverter const & src );
+		virtual ~ScalarConverter();
 
 //		ScalarConverter &		operator=( ScalarConverter const & rhs );
 

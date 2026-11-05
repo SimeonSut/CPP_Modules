@@ -16,11 +16,10 @@ int main( int argc, char **argv )
 {
 	if (argc <= 1)
 		return 1;
-	ScalarConverter input;
 
-	input.convert(argv[1]);
-	input.convert(argv[2]);
-	input.convert(argv[3]);
-	input.convert(argv[4]);
+	ScalarConverter::convert(argv[1]);
+//	ScalarConverter::convert(argv[2]);
+//	ScalarConverter::convert(argv[3]);
+//	ScalarConverter::convert(argv[4]);
 	return 0;
 }

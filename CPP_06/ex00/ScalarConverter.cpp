@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:58:04 by marvin            #+#    #+#             */
-/*   Updated: 2026/11/04 19:13:33 by marvin           ###   ########.fr       */
+/*   Updated: 2026/11/05 20:18:45 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+static bool is_Int( std::string input );
+static int which_fraction_type( std::string input );
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -21,12 +24,12 @@ ScalarConverter::ScalarConverter()
 	if (DEBUG)
 		std::cout << "Default Constructor called" << std::endl;
 }
-/*
-ScalarConverter::ScalarConverter( const ScalarConverter & src )
+
+ScalarConverter::ScalarConverter( ScalarConverter const & src )
 {
-	if (DEBUG)
-		std::cout << "Copy Constructor called" << std::endl;
-}*/
+	if (&src == this)
+		return ;
+}
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -37,7 +40,6 @@ ScalarConverter::~ScalarConverter()
 	if (DEBUG)
 		std::cout << "Destructor Called" << std::endl;
 }
-
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
@@ -56,12 +58,8 @@ ScalarConverter &				ScalarConverter::operator=( ScalarConverter const & rhs )
 
 void	ScalarConverter::convert( std::string literal )
 {
-	char	*ptr;
-	long int result = strtol(literal.c_str(), &ptr, 10);
-
-	if (DEBUG)
-		std::cout << "convert member function called" << std::endl;
-	std::cout << result << std::endl;
+	if ( literal.empty() )
+		;
 }
 
 /*
@@ -73,5 +71,43 @@ void	ScalarConverter::convert( std::string literal )
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
+static bool is_Int( std::string input )
+{
+	for ( int i = 0; input[i]; i++ )
+		if ( isdigit(input[i]) == false )
+			return false;
+	return true;
+}
+
+static int which_fraction_type( std::string input )
+{
+	size_t	point = input.find('.');
+
+	if ( (point != input.npos && point != input.rfind('.')) )
+		return NONE;
+	for ( size_t i = 0; i < point; i++ )
+		if ( isdigit( input[i] ) == false)
+			return NONE;
+	for ( size_t i = point, k = 0; input[i + 1] ; i++, k++ )
+	{
+		if ( k >= 15 )
+			return NONE;
+	}
+	switch ((input.back() == 'f'))
+	{
+		case true:
+			return FLOAT;
+		case false:
+			return DOUBLE;
+	}
+	return NONE;
+}
+
+/*
+static bool Char( std::string input )
+{}
+
+static bool Double( std::string input )
+{}*/
 
 /* ************************************************************************** */
