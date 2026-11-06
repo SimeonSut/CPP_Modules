@@ -6,14 +6,19 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:58:04 by marvin            #+#    #+#             */
-/*   Updated: 2026/11/05 20:18:45 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/06 23:10:57 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-static bool is_Int( std::string input );
-static int which_fraction_type( std::string input );
+static int Type( std::string input );
+static bool is_Char( std::string input );
+static bool	is_Int( std::string input );
+static int	Fraction( std::string input );
+
+static void	toChar( std::string input, int type );
+static void	toInt( std::string input, int type );
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -54,60 +59,154 @@ ScalarConverter &				ScalarConverter::operator=( ScalarConverter const & rhs )
 		//this->_value = rhs.getValue();
 	//}
 	return *this;
-}*/
+}*
+
+
+** --------------------------------- METHODS ----------------------------------
+*/
 
 void	ScalarConverter::convert( std::string literal )
 {
 	if ( literal.empty() )
-		;
+		return ;
+	int	type = Type( literal );
+	toChar( literal, type );
+	toInt( literal, type );
 }
 
 /*
-** --------------------------------- METHODS ----------------------------------
+** --------------------------------- TYPE DETERMINATION FUNCTIONS ---------------------------------
 */
 
+static int Type( std::string input )
+{
+	if ( is_Char( input ) == true )
+		return CHAR;
+	else if ( is_Int( input ) == true )
+		return INT;
+	return Fraction( input );
+}
 
-/*
-** --------------------------------- ACCESSOR ---------------------------------
-*/
+static bool is_Char( std::string input )
+{
+	return (input.length() == 3 && input.at(0) == '\'' && input.at(2) == '\'' ? true : false);
+}
 
 static bool is_Int( std::string input )
 {
-	for ( int i = 0; input[i]; i++ )
-		if ( isdigit(input[i]) == false )
+	int	i = (input[0] = ('-') ? 1 : 0);
+
+	if ( !input[i] )
+		return false;
+	for ( ; input[i]; i++ )
+	{
+		if ( isdigit(input.at(i)) == false )
 			return false;
+	}
+	if ( input.at(0) == '-' && ((input.length() > 11) || input.length() < 2) )
+		return false;
+	else if ( (isdigit(input.at(0)) && input.length() > 10) )
+		return false;
+	else if ( (input.at(0) == '-' && input.length() == 11) && input.compare("-2147483648") > 0 )
+		return false;
+	else if ( (input.at(0) == '+' && input.length() == 10) && input.compare("2147483647") > 0 )
+		return false;
 	return true;
 }
 
-static int which_fraction_type( std::string input )
+static int Fraction( std::string input )
 {
 	size_t	point = input.find('.');
+	size_t	i = (input[0] = '-' ? 1 : 0);
 
-	if ( (point != input.npos && point != input.rfind('.')) )
+	try
+	{
+		input.at(point - 1);
+		if ( isdigit(input.at(point + 1)) == false || point == input.npos || point != input.rfind('.') )
+			return NONE;
+	}
+	catch ( std::out_of_range & e )
+	{
 		return NONE;
-	for ( size_t i = 0; i < point; i++ )
-		if ( isdigit( input[i] ) == false)
-			return NONE;
-	for ( size_t i = point, k = 0; input[i + 1] ; i++, k++ )
-	{
-		if ( k >= 15 )
-			return NONE;
 	}
-	switch ((input.back() == 'f'))
+	for ( ; i < point; i++ )
+		if ( isdigit( input.at(i) ) == false )
+			return NONE;
+	for ( size_t i = point + 1, k = 0; i + 1 <= input.size() ; i++, k++ )
 	{
-		case true:
-			return FLOAT;
-		case false:
-			return DOUBLE;
+		if ( isdigit( input.at(i) == false ) || k >= 15 )
+			return NONE;
+		point++;
 	}
+	if ( isdigit(input.at(point)) )
+		return DOUBLE;
+	else if ( input.at(point) == 'f' )
+		return FLOAT;
 	return NONE;
 }
 
 /*
-static bool Char( std::string input )
+** --------------------------------- TYPE TRANSFORMATION FUNCTIONS ---------------------------------
+*/
+
+static void	toChar( std::string input, int type )
+{
+	int casti;
+	float castf;
+	double castd;
+	std::stringstream stream(input);
+
+	std::cout << "char : ";
+	switch ( type )
+	{
+		case NONE:
+			std::cout << "impossible" << std::endl;
+			break;
+		case CHAR:
+			std::cout << static_cast<char>(input.at(1)) << std::endl;
+			break;
+		case INT:
+			casti = atoi(input.c_str());
+			if ( casti <= 31 || casti >= 176 )
+				std::cout << "Non displayable" << std::endl;
+			else
+				std::cout << "'" << static_cast<char>(casti) << "'" << std::endl;
+			break;
+		case FLOAT:
+			stream >> castf;
+			if ( castf <= 31.0f || castf >= 176.0f )
+				std::cout << "Non displayable" << std::endl;
+			else
+				std::cout << "'" << static_cast<char>(castf) << "'" << std::endl;
+			break;
+		case DOUBLE:
+			stream >> castd;
+			if ( castd <= 31.0 || castd >= 176.0 )
+				std::cout << "Non displayable" << std::endl;
+			else
+				std::cout << "'" << static_cast<char>(castd) << "'" << std::endl;
+			break;
+	}
+}
+
+static void	toInt( std::string input, int type )
+{
+	std::cout << "int : ";
+	switch ( type )
+	{
+		case NONE:
+			std::cout << "impossible" << std::endl;
+			break;
+		case CHAR:
+			std::cout << static_cast<int>(input.at(1)) << std::endl;
+			break;
+		case INT:
+	}
+}
+
+/*
+static void	toFloat( std::string input, int type )
 {}
 
-static bool Double( std::string input )
+static void	toDouble( std::string input, int type )
 {}*/
-
-/* ************************************************************************** */
