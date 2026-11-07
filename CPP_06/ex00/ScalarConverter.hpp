@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:58:06 by marvin            #+#    #+#             */
-/*   Updated: 2026/11/06 22:40:03 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/07 17:14:10 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sstream>
 # include <cstdlib>
 # include <cctype>
+# include <math.h>
 # include "limits.h"
 
 enum e_types

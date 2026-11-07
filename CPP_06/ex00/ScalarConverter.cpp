@@ -6,19 +6,21 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:58:04 by marvin            #+#    #+#             */
-/*   Updated: 2026/11/06 23:10:57 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/07 17:35:16 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-static int Type( std::string input );
-static bool is_Char( std::string input );
-static bool	is_Int( std::string input );
-static int	Fraction( std::string input );
+static int Type( std::string literal );
+static bool is_Char( std::string & input );
+static bool	is_Int( std::string & input );
+static int	Fraction( std::string & input );
 
-static void	toChar( std::string input, int type );
-static void	toInt( std::string input, int type );
+static void	toChar( std::string & input, int type );
+static void	toInt( std::string & input, int type );
+static void	toFloat( std::string input, int type );
+static void	toDouble( std::string input, int type );
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -49,17 +51,6 @@ ScalarConverter::~ScalarConverter()
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
-/*
-ScalarConverter &				ScalarConverter::operator=( ScalarConverter const & rhs )
-{
-	if (DEBUG)
-		std::cout << "assignation called" << std::endl;
-	//if ( this != &rhs )
-	//{
-		//this->_value = rhs.getValue();
-	//}
-	return *this;
-}*
 
 
 ** --------------------------------- METHODS ----------------------------------
@@ -72,29 +63,31 @@ void	ScalarConverter::convert( std::string literal )
 	int	type = Type( literal );
 	toChar( literal, type );
 	toInt( literal, type );
+	toFloat( literal, type );
+	toDouble( literal, type );
 }
 
 /*
 ** --------------------------------- TYPE DETERMINATION FUNCTIONS ---------------------------------
 */
 
-static int Type( std::string input )
+static int Type( std::string literal )
 {
-	if ( is_Char( input ) == true )
+	if ( is_Char( literal ) == true )
 		return CHAR;
-	else if ( is_Int( input ) == true )
+	else if ( is_Int( literal ) == true )
 		return INT;
-	return Fraction( input );
+	return Fraction( literal );
 }
 
-static bool is_Char( std::string input )
+static bool is_Char( std::string & input )
 {
 	return (input.length() == 3 && input.at(0) == '\'' && input.at(2) == '\'' ? true : false);
 }
 
-static bool is_Int( std::string input )
+static bool is_Int( std::string & input )
 {
-	int	i = (input[0] = ('-') ? 1 : 0);
+	int	i = input[0] == '-' ? 1 : 0;
 
 	if ( !input[i] )
 		return false;
@@ -114,10 +107,10 @@ static bool is_Int( std::string input )
 	return true;
 }
 
-static int Fraction( std::string input )
+static int Fraction( std::string & input )
 {
 	size_t	point = input.find('.');
-	size_t	i = (input[0] = '-' ? 1 : 0);
+	size_t	i = input[0] == '-' ? 1 : 0;
 
 	try
 	{
@@ -149,12 +142,12 @@ static int Fraction( std::string input )
 ** --------------------------------- TYPE TRANSFORMATION FUNCTIONS ---------------------------------
 */
 
-static void	toChar( std::string input, int type )
+static void	toChar( std::string & input, int type )
 {
-	int casti;
-	float castf;
-	double castd;
-	std::stringstream stream(input);
+	int					casti;
+	float				castf;
+	double				castd;
+	std::stringstream	stream(input);
 
 	std::cout << "char : ";
 	switch ( type )
@@ -189,8 +182,13 @@ static void	toChar( std::string input, int type )
 	}
 }
 
-static void	toInt( std::string input, int type )
+static void	toInt( std::string & input, int type )
 {
+	int					casti;
+	float				castf;
+	double				castd;
+	std::stringstream	stream(input);
+
 	std::cout << "int : ";
 	switch ( type )
 	{
@@ -201,12 +199,93 @@ static void	toInt( std::string input, int type )
 			std::cout << static_cast<int>(input.at(1)) << std::endl;
 			break;
 		case INT:
+			stream >> casti;
+			std::cout << casti << std::endl;
+			break;
+		case FLOAT:
+			stream >> castf;
+			std::cout << static_cast<int>(castf) << std::endl;
+			break;
+		case DOUBLE:
+			stream >> castd;
+			std::cout << static_cast<int>(castd) << std::endl;
+			break;
 	}
 }
 
-/*
 static void	toFloat( std::string input, int type )
-{}
+{
+	int					casti;
+	float				castf;
+	double				castd;
+	std::stringstream	stream(input);
+
+	std::cout << "float : ";
+	switch ( type )
+	{
+		case NONE:
+			std::cout << "Impossible" << std::endl;
+			break;
+		case CHAR:
+			std::cout << static_cast<float>(input[1]) << std::endl;
+			break;
+		case INT:
+			stream >> casti;
+			std::cout << static_cast<double>(casti) << ".0f" << std::endl;
+			break;
+		case FLOAT:
+			stream >> castf;
+			std::cout << castf;
+			if (fmod(castf, 1) == 0.0f)
+				std::cout << ".0f" << std::endl;
+			else
+				std::cout << "f" << std::endl;
+			break;
+		case DOUBLE:
+			stream >> castd;
+			std::cout << static_cast<float>(castd);
+			if (fmod(castd, 1) == 0.0f)
+				std::cout << ".0f" << std::endl;
+			else
+				std::cout << "f" << std::endl;
+			break;
+	}
+}
+
 
 static void	toDouble( std::string input, int type )
-{}*/
+{
+	int					casti;
+	float				castf;
+	double				castd;
+	std::stringstream	stream(input);
+
+	std::cout << "double : ";
+	switch ( type )
+	{
+		case NONE:
+			std::cout << "Impossible" << std::endl;
+			break;
+		case CHAR:
+			std::cout << static_cast<double>(input[1]) << std::endl;
+			break;
+		case INT:
+			stream >> casti;
+			std::cout << static_cast<double>(casti) << ".0" << std::endl;
+			break;
+		case FLOAT:
+			stream >> castf;
+			std::cout << static_cast<double>(castf);
+			if (fmod(castf, 1) == 0.0f)
+				std::cout << ".0";
+			std::cout << std::endl;
+			break;
+		case DOUBLE:
+			stream >> castd;
+			std::cout << castd;
+			if (fmod(castd, 1) == 0.0f)
+				std::cout << ".0";
+			std::cout << std::endl;
+			break;
+	}
+}
