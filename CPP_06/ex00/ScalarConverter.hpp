@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:58:06 by marvin            #+#    #+#             */
-/*   Updated: 2026/11/07 17:14:10 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/07 17:40:46 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ class ScalarConverter
 
 		ScalarConverter();
 		ScalarConverter( ScalarConverter const & src );
-		virtual ~ScalarConverter();
+		virtual ~ScalarConverter() = 0;
 
 		static void	convert( std::string literal );
 
