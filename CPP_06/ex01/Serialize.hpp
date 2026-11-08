@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serialize.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 17:37:09 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/07 18:00:59 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/08 18:33:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,8 @@
 
 # include <iostream>
 # include <string>
-
-struct Data
-{
-	int		integer;
-	char	*ptr;
-	float	floatin_point;
-};
+# include <stdint.h>
+# include "Data.hpp"
 
 class Serialize
 {

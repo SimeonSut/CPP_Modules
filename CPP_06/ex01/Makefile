@@ -4,9 +4,9 @@ FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 DEBUG_FLAGS = -D DEBUG=1
 
-SRC = main.cpp ScalarConverter.cpp
+SRC = main.cpp Serialize.cpp
 
-HDR = ScalarConverter.hpp
+HDR = Serialize.hpp Data.hpp
 
 NAME = test
 

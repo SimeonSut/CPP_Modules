@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serialize.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 17:37:07 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/07 18:07:07 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/08 18:37:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,18 @@
 
 Serialize::Serialize()
 {
+	if (DEBUG)
+	{
+		std::cout << "Constructor called"<<std::endl;
+	}
 }
 
 Serialize::Serialize( const Serialize & src )
 {
+	if (DEBUG)
+	{
+		std::cout << "Copy Constructor called"<<std::endl;
+	}
 	if (this == &src)
 		return ;
 }
@@ -32,8 +40,11 @@ Serialize::Serialize( const Serialize & src )
 
 Serialize::~Serialize()
 {
+	if (DEBUG)
+	{
+		std::cout << "Destructor called"<<std::endl;
+	}
 }
-
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
@@ -43,17 +54,22 @@ Serialize &				Serialize::operator=( Serialize const & src )
 {
 	if ( this == &src )
 		return *this;
+	return *this;
 }
 
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
-uintptr_t serialize(Data* ptr)
-{}
+uintptr_t Serialize::serialize(Data* ptr)
+{
+	return reinterpret_cast<uintptr_t>(ptr);
+}
 
-Data* deserialize(uintptr_t raw)
-{}
+Data* Serialize::deserialize(uintptr_t raw)
+{
+	return reinterpret_cast<Data *>(raw);
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
