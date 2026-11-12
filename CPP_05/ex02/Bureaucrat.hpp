@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:14 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/01 19:51:36 by marvin           ###   ########.fr       */
+/*   Updated: 2026/11/12 20:42:41 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,8 @@
 # define DEBUG 0
 # endif
 
-# ifndef MINIMAL_GRADE
 # define MINIMAL_GRADE 150
-# endif
-
-# ifndef MAXIMAL_GRADE
 # define MAXIMAL_GRADE 1
-# endif
 
 # include <iostream>
 # include <string>

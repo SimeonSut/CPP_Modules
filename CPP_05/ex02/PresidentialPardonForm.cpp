@@ -3,43 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 20:27:13 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/01 21:08:33 by marvin           ###   ########.fr       */
+/*   Updated: 2026/11/12 21:16:15 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
-
-const short PresidentialPardonForm::president_grade_to_sign;
-const short PresidentialPardonForm::president_grade_to_exec;
-
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-PresidentialPardonForm::PresidentialPardonForm() :	name("PresidentialPardonForm"),
-													target("NoTarget"),
-													is_signed(false)
+PresidentialPardonForm::PresidentialPardonForm() :
+AForm( "PresidentialPardonForm", false, PRESIDENT_GRADE_TO_SIGN, PRESIDENT_GRADE_TO_EXEC ),
+target("NoTarget")
 {
 	if (DEBUG)
 		std::cout << "PresidentialPardonForm Default Constructor called" << std::endl;
-
 }
 
-PresidentialPardonForm::PresidentialPardonForm( std::string const & target ) :	AForm( "PresidentialPardonForm", false, president_grade_to_sign, president_grade_to_exec ),
-																				target( target ),
-																				is_signed( false )
+PresidentialPardonForm::PresidentialPardonForm( std::string const & target ) :
+AForm( "PresidentialPardonForm", false, PRESIDENT_GRADE_TO_SIGN, PRESIDENT_GRADE_TO_EXEC ),
+target( target )
 {
 	if (DEBUG)
 		std::cout << "PresidentialPardonForm target parameter Constructor called" << std::endl;
 	out_of_range_thrower( getName(), get_grade_to_sign(), get_grade_to_exec() );
 }
 
-PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const & src ) :	AForm( "PresidentialPardonForm", src.get_is_signed(), president_grade_to_sign, president_grade_to_exec ),
-																						target( src.getName() ),
-																						is_signed( src.get_is_signed() )
+PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const & src ) :
+AForm( "PresidentialPardonForm", false, PRESIDENT_GRADE_TO_SIGN, PRESIDENT_GRADE_TO_EXEC ),
+target( src.getName() )
 {
 	if (DEBUG)
 		std::cout << "PresidentialPardonForm Copy Constructor called" << std::endl;
@@ -64,7 +59,8 @@ PresidentialPardonForm &				PresidentialPardonForm::operator=( PresidentialPardo
 {
 	if (DEBUG)
 		std::cout << "PresidentialPardonForm assignement called" << std::endl;
-	is_signed = src.get_is_signed();
+	if ( this == &src )
+		return *this;
 	return *this;
 }
 
@@ -98,13 +94,6 @@ void	PresidentialPardonForm::action() const
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-
-std::string	PresidentialPardonForm::getName() const
-{
-	if (DEBUG)
-		std::cout << "PresidentialPardonForm getName called" << std::endl;
-	return name;
-}
 
 std::string	PresidentialPardonForm::getTarget() const
 {

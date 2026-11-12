@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 20:27:21 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/01 21:01:40 by marvin           ###   ########.fr       */
+/*   Updated: 2026/11/12 21:05:54 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRESIDENTIALPARDONFORM_HPP
 # define PRESIDENTIALPARDONFORM_HPP
+
+# define PRESIDENT_GRADE_TO_SIGN 25
+# define PRESIDENT_GRADE_TO_EXEC 5
 
 # include "AForm.hpp"
 
@@ -27,7 +30,6 @@ class PresidentialPardonForm : virtual public AForm
 
 		PresidentialPardonForm &		operator=( PresidentialPardonForm const & src );
 
-		std::string	getName() const;
 		std::string	getTarget() const;
 
 	protected:
@@ -36,11 +38,7 @@ class PresidentialPardonForm : virtual public AForm
 
 	private:
 
-		const std::string			name;
 		std::string const			target;
-		bool						is_signed;
-		static const short			president_grade_to_sign = 25;
-		static const short			president_grade_to_exec = 5;
 
 };
 

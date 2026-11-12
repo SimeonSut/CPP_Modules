@@ -7,16 +7,17 @@
 Form::Form() : name("NoName"), is_signed(false), grade_to_sign(MINIMAL_GRADE), grade_to_exec(MINIMAL_GRADE)
 {}
 
-Form::Form( std::string const & name, bool const & is_signed, short const & grade_to_sign, short const & grade_to_exec ) :	name(name),
-																															is_signed(is_signed),
-																															grade_to_sign(grade_to_sign),
-																															grade_to_exec(grade_to_exec)
+Form::Form( std::string const & name, short const & grade_to_sign, short const & grade_to_exec ) :
+name(name),
+is_signed(false),
+grade_to_sign(grade_to_sign),
+grade_to_exec(grade_to_exec)
 {
 	out_of_range_thrower( *this, grade_to_sign, grade_to_exec );
 }
 
 Form::Form( const Form & src ) :	name(src.getName()),
-									is_signed(src.get_is_signed()),
+									is_signed(false),
 									grade_to_sign(src.get_grade_to_sign()),
 									grade_to_exec(src.get_grade_to_exec())
 {

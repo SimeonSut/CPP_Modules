@@ -9,7 +9,7 @@ class Form
 	public:
 
 		Form();
-		Form( std::string const & name, bool const & is_signed, short const & grade_to_sign, short const & grade_to_exec );
+		Form( std::string const & name, short const & grade_to_sign, short const & grade_to_exec );
 		Form( Form const & src );
 		~Form();
 

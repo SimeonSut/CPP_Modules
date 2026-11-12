@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 20:27:19 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/01 20:51:40 by marvin           ###   ########.fr       */
+/*   Updated: 2026/11/12 21:04:23 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
+
+# define ROBOT_GRADE_TO_SIGN 72
+# define ROBOT_GRADE_TO_EXEC 45
 
 # include "AForm.hpp"
 
@@ -27,7 +30,6 @@ class RobotomyRequestForm : virtual public AForm
 
 		RobotomyRequestForm &		operator=( RobotomyRequestForm const & src );
 
-		std::string	getName() const;
 		std::string	getTarget() const;
 
 	protected:
@@ -36,11 +38,7 @@ class RobotomyRequestForm : virtual public AForm
 
 	private:
 
-		const std::string			name;
 		std::string const			target;
-		bool						is_signed;
-		static const short			robot_grade_to_sign = 72;
-		static const short			robot_grade_to_exec = 45;
 
 };
 

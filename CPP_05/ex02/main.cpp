@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:12 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/01 21:15:12 by marvin           ###   ########.fr       */
+/*   Updated: 2026/11/12 21:11:47 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,44 +18,10 @@
 
 int	main(void)
 {
-	std::cout << "\n\n\n--------BUREAUCRATS TESTS---------\n\n\n";
-	try
-	{
-		Bureaucrat John("John", MAXIMAL_GRADE - 1);
-		Bureaucrat Bob("Bob", MINIMAL_GRADE + 1);
-	}
-	catch ( std::exception & e )
-	{
-		std::cout << e.what() << "\n";
-	}
-	Bureaucrat John("John", MAXIMAL_GRADE);
-	Bureaucrat Bob("Bob", MINIMAL_GRADE);
-	for ( short i = 0; i < 155; i++ )
-	{
-		try
-		{
-			--John;
-		}
-		catch( std::exception & e )
-		{
-			std::cout << e.what() << "\n";
-		}
-		usleep(10000);
-		try
-		{
-			++Bob;
-		}
-		catch( std::exception & e )
-		{
-			std::cout << e.what() << "\n";
-		}
-		std::cout << John << "\n";
-		std::cout << Bob << "\n";
-	}
-	usleep(100000);
 	std::cout << "\n\n\n---------------ShrubberyCreationForm FORM TESTS------------------------------\n\n\n";
-	usleep(100000);
 	ShrubberyCreationForm	Tree("output.txt");
+	Bureaucrat				John("John", MINIMAL_GRADE);
+	Bureaucrat				Bob("Bob", MAXIMAL_GRADE);
 	Bureaucrat				Shrub_sign_valid_John("Valid to sign John", 145);
 	Bureaucrat				Shrub_sign_invalid_John("Invalid to sign John", 146);
 	Bureaucrat				Shrub_exec_valid_John("Valid to exec John", 137);
@@ -74,7 +40,7 @@ int	main(void)
 	usleep(100000);
 	std::cout << "\n\n\n---------------RobotomyRequestForm FORM TESTS------------------------------\n\n\n";
 	usleep(100000);
-	RobotomyRequestForm	operation("Bill");
+	RobotomyRequestForm		operation("Bill");
 	Bureaucrat				Robot_sign_valid_John("Valid to sign John", 72);
 	Bureaucrat				Robot_sign_invalid_John("Invalid to sign John", 73);
 	Bureaucrat				Robot_exec_valid_John("Valid to exec John", 45);

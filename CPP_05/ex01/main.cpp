@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:12 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/31 18:49:15 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/12 20:38:57 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ int	main(void)
 	usleep(100000);
 
 	Form A;
-	Form B("B", false, 50, 50);
-	Form C("C", true, 20, 20);
-	Form D("D", false, 80, 80);
+	Form B("B", 50, 50);
+	Form C("C", 20, 20);
+	Form D("D", 80, 80);
 	try
 	{
-		Form E("E", false, 151, 151);
+		Form E("E", 151, 151);
 	}
 	catch ( std::exception & e )
 	{
@@ -67,7 +67,7 @@ int	main(void)
 	}
 	try
 	{
-		Form F("F", false, 0, 0);
+		Form F("F", 0, 0);
 	}
 	catch ( std::exception & e )
 	{
@@ -84,7 +84,7 @@ int	main(void)
 	John.signForm(B);
 	John.signForm(C);
 	John.signForm(D);
-	Form E("E", false, 12, 12);
+	Form E("E", 12, 12);
 	std::cout << "\n" << A << "\n" << B << "\n" << C << "\n" << D << E << std::endl;
 	A = B = C = D = E;
 	std::cout << "---------------AFTER ASSIGNATION OF EVERYTHING TO USIGNED FORM------------------------------";
