@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 20:27:19 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/12 21:04:23 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/13 12:46:52 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class RobotomyRequestForm : virtual public AForm
 
 	protected:
 
-		void		action() const;
+		void		execute() const;
 
 	private:
 

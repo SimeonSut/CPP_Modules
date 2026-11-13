@@ -3,42 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 20:27:11 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/03 14:20:01 by marvin           ###   ########.fr       */
+/*   Updated: 2026/11/13 13:18:31 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-const short RobotomyRequestForm::robot_grade_to_sign;
-const short RobotomyRequestForm::robot_grade_to_exec;
-
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-RobotomyRequestForm::RobotomyRequestForm() :	name("RobotomyRequestForm"),
-												target("NoTarget"),
-												is_signed(false)
+RobotomyRequestForm::RobotomyRequestForm() :
+AForm("RobotomyRequestForm", false, ROBOT_GRADE_TO_SIGN, ROBOT_GRADE_TO_EXEC ),
+target("NoTarget")
 {
 	if (DEBUG)
 		std::cout << "RobotomyRequestForm Default Constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm( std::string const & target ) :	AForm( "RobotomyRequestForm", false, robot_grade_to_sign, robot_grade_to_exec ),
-																			target( target ),
-																			is_signed( false )
+RobotomyRequestForm::RobotomyRequestForm( std::string const & target ) :
+AForm("RobotomyRequestForm", false, ROBOT_GRADE_TO_SIGN, ROBOT_GRADE_TO_EXEC ),
+target(target)
 {
 	if (DEBUG)
 		std::cout << "RobotomyRequestForm target parameter Constructor called" << std::endl;
 	out_of_range_thrower( getName(), get_grade_to_sign(), get_grade_to_exec() );
 }
 
-RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const & src ) :	AForm( "RobotomyRequestForm", src.get_is_signed(), robot_grade_to_sign, robot_grade_to_exec ),
-																				target( src.getTarget() ),
-																				is_signed( src.get_is_signed() )
+RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const & src ) :
+AForm("RobotomyRequestForm", false, ROBOT_GRADE_TO_SIGN, ROBOT_GRADE_TO_EXEC ),
+target( src.getTarget() )
 {
 	if (DEBUG)
 		std::cout << "RobotomyRequestForm Copy Constructor called" << std::endl;
@@ -59,11 +56,12 @@ RobotomyRequestForm::~RobotomyRequestForm()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-RobotomyRequestForm &				RobotomyRequestForm::operator=( RobotomyRequestForm const & src )
+RobotomyRequestForm &	RobotomyRequestForm::operator=( RobotomyRequestForm const & src )
 {
 	if (DEBUG)
 		std::cout << "RobotomyRequestForm assignement called" << std::endl;
-	is_signed = src.get_is_signed();
+	if ( this == &src )
+		return *this;
 	return *this;
 }
 
@@ -108,13 +106,6 @@ void	RobotomyRequestForm::action() const
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-
-std::string	RobotomyRequestForm::getName() const
-{
-	if (DEBUG)
-		std::cout << "RobotomyRequestForm getName called" << std::endl;
-	return name;
-}
 
 std::string	RobotomyRequestForm::getTarget() const
 {

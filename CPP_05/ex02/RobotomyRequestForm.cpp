@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 20:27:11 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/12 21:16:10 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/13 12:46:48 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ std::ostream &			operator<<( std::ostream & outflow, RobotomyRequestForm const &
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	RobotomyRequestForm::action() const
+void	RobotomyRequestForm::execute() const
 {
 	static long long random_bla = 0;
 	if (DEBUG)

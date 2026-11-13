@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 20:27:13 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/12 21:16:15 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/13 12:57:05 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-PresidentialPardonForm &				PresidentialPardonForm::operator=( PresidentialPardonForm const & src )
+PresidentialPardonForm &	PresidentialPardonForm::operator=( PresidentialPardonForm const & src )
 {
 	if (DEBUG)
 		std::cout << "PresidentialPardonForm assignement called" << std::endl;
@@ -64,7 +64,7 @@ PresidentialPardonForm &				PresidentialPardonForm::operator=( PresidentialPardo
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & outflow, PresidentialPardonForm const & src )
+std::ostream &	operator<<( std::ostream & outflow, PresidentialPardonForm const & src )
 {
 	if (DEBUG)
 		std::cout << "PresidentialPardonForm outflow overload called" << std::endl;
@@ -84,7 +84,7 @@ std::ostream &			operator<<( std::ostream & outflow, PresidentialPardonForm cons
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	PresidentialPardonForm::action() const
+void	PresidentialPardonForm::execute() const
 {
 	if (DEBUG)
 		std::cout << "PresidentialPardonForm action called" << std::endl;

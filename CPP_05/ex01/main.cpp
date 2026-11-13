@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:12 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/12 20:38:57 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/13 12:22:24 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,11 @@
 
 int	main(void)
 {
-	std::cout << "\n\n\n--------BUREAUCRATS TESTS---------\n\n\n";
-	try
-	{
-		Bureaucrat John("John", MAXIMAL_GRADE - 1);
-		Bureaucrat Bob("Bob", MINIMAL_GRADE + 1);
-	}
-	catch ( std::exception & e )
-	{
-		std::cout << e.what() << "\n";
-	}
-	Bureaucrat John("John", MAXIMAL_GRADE);
-	Bureaucrat Bob("Bob", MINIMAL_GRADE);
-	for ( short i = 0; i < 155; i++ )
-	{
-		try
-		{
-			--John;
-		}
-		catch( std::exception & e )
-		{
-			std::cout << e.what() << "\n";
-		}
-		usleep(10000);
-		try
-		{
-			++Bob;
-		}
-		catch( std::exception & e )
-		{
-			std::cout << e.what() << "\n";
-		}
-		std::cout << John << "\n";
-		std::cout << Bob << "\n";
-	}
-	usleep(100000);
-	std::cout << "\n\n\n---------FORMS TESTS---------\n\n\n";
+	std::cout << "\n\n\n------------------------------FORMS TESTS------------------------------\n\n\n";
 	usleep(100000);
 
+	Bureaucrat John("John", MINIMAL_GRADE);
+	Bureaucrat Bob("Bob", MAXIMAL_GRADE);
 	Form A;
 	Form B("B", 50, 50);
 	Form C("C", 20, 20);
@@ -87,7 +54,7 @@ int	main(void)
 	Form E("E", 12, 12);
 	std::cout << "\n" << A << "\n" << B << "\n" << C << "\n" << D << E << std::endl;
 	A = B = C = D = E;
-	std::cout << "---------------AFTER ASSIGNATION OF EVERYTHING TO USIGNED FORM------------------------------";
+	std::cout << "------------------------------AFTER ASSIGNATION OF EVERYTHING TO USIGNED FORM------------------------------";
 	std::cout << "\n" << A << "\n" << B << "\n" << C << "\n" << D << E << std::endl;
 	return 0;
 }

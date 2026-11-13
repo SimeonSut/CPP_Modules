@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 19:02:09 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/01 20:47:33 by marvin           ###   ########.fr       */
+/*   Updated: 2026/11/13 12:45:42 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,21 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-AForm::AForm() : name("NoName"), is_signed(false), grade_to_sign(MINIMAL_GRADE), grade_to_exec(MINIMAL_GRADE)
+AForm::AForm() :
+name("NoName"),
+is_signed(false),
+grade_to_sign(MINIMAL_GRADE),
+grade_to_exec(MINIMAL_GRADE)
 {
 	if (DEBUG)
 		std::cout << "AForm Default Constructor called" << std::endl;
 }
 
-AForm::AForm( std::string const & name, bool const & is_signed, short const & grade_to_sign, short const & grade_to_exec ) :	name(name),
-																																is_signed(is_signed),
-																																grade_to_sign(grade_to_sign),
-																																grade_to_exec(grade_to_exec)
+AForm::AForm( std::string const & name, bool const & is_signed, short const & grade_to_sign, short const & grade_to_exec ) :
+name(name),
+is_signed(is_signed),
+grade_to_sign(grade_to_sign),
+grade_to_exec(grade_to_exec)
 {
 	if (DEBUG)
 	{
@@ -36,10 +41,11 @@ AForm::AForm( std::string const & name, bool const & is_signed, short const & gr
 	out_of_range_thrower( getName(), grade_to_sign, grade_to_exec );
 }
 
-AForm::AForm( const AForm & src ) :	name(src.getName()),
-									is_signed(src.get_is_signed()),
-									grade_to_sign(src.get_grade_to_sign()),
-									grade_to_exec(src.get_grade_to_exec())
+AForm::AForm( const AForm & src ) :
+name(src.getName()),
+is_signed(src.get_is_signed()),
+grade_to_sign(src.get_grade_to_sign()),
+grade_to_exec(src.get_grade_to_exec())
 {
 	if (DEBUG)
 		std::cout << "AForm Copy Constructor called" << std::endl;
@@ -113,13 +119,13 @@ void	AForm::out_of_range_thrower( std::string error_transmission, short const & 
 		throw AForm::GradeTooHighException( error_transmission.append(" Form's grade_to_exec") );
 }
 
-void	AForm::execute( std::string error_transmission, short grade ) const
+void	AForm::check_exec_validity( std::string bureaucrat_name, short grade ) const
 {
 	if (DEBUG)
 		std::cout << getName() << "'s AForm execute function called" << std::endl;
 	if ( get_is_signed() == false )
 	{
-		throw AForm::FormNotSignedException( error_transmission.append(" can't execute because ") );
+		throw AForm::FormNotSignedException( bureaucrat_name.append(" can't execute because ") );
 		return ;
 	}
 	if (DEBUG)
@@ -129,12 +135,12 @@ void	AForm::execute( std::string error_transmission, short grade ) const
 	}
 	if ( grade > get_grade_to_exec() )
 	{
-		error_transmission.append( "'s grade to execute " );
-		error_transmission.append( getName() );
-		throw AForm::GradeTooLowException( error_transmission );
+		bureaucrat_name.append( "'s grade to execute " );
+		bureaucrat_name.append( getName() );
+		throw AForm::GradeTooLowException( bureaucrat_name );
 		return ;
 	}
-	action();
+	execute();
 }
 
 /*
@@ -164,7 +170,8 @@ short const &	AForm::get_grade_to_exec() const
 
 //------------------------------------------HIGH-------------------------------------------------------
 
-AForm::GradeTooHighException::GradeTooHighException( std::string const & Error ) : error_name(Error)
+AForm::GradeTooHighException::GradeTooHighException( std::string const & Error ) :
+error_name(Error)
 {
 	if (DEBUG)
 	{
@@ -196,7 +203,8 @@ const char* AForm::GradeTooHighException::what() const throw()
 
 //------------------------------------------LOW-------------------------------------------------------
 
-AForm::GradeTooLowException::GradeTooLowException( std::string const & Error ) : error_name(Error)
+AForm::GradeTooLowException::GradeTooLowException( std::string const & Error ) :
+error_name(Error)
 {
 	if (DEBUG)
 	{
@@ -228,7 +236,8 @@ const char* AForm::GradeTooLowException::what() const throw()
 
 //------------------------------------------NOT SIGNED-------------------------------------------------------
 
-AForm::FormNotSignedException::FormNotSignedException( std::string const & Error ) : error_name(Error)
+AForm::FormNotSignedException::FormNotSignedException( std::string const & Error ) :
+error_name(Error)
 {
 	if (DEBUG)
 	{

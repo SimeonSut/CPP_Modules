@@ -3,33 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 20:27:08 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/01 20:49:35 by marvin           ###   ########.fr       */
+/*   Updated: 2026/11/13 13:19:05 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-const short ShrubberyCreationForm::shrub_grade_to_sign;
-const short ShrubberyCreationForm::shrub_grade_to_exec;
-
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ShrubberyCreationForm::ShrubberyCreationForm() :	name("ShrubberyCreationForm"),
-													target("NoTarget"),
-													is_signed(false)
+ShrubberyCreationForm::ShrubberyCreationForm() :
+AForm( "ShrubberyCreationForm", false, SCHRUB_GRADE_TO_SIGN, SCHRUB_GRADE_TO_EXEC ),
+target("NoTarget")
 {
 	if (DEBUG)
 		std::cout << "ShrubberyCreationForm Default Constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm( std::string const target ) :		AForm( "ShrubberyCreationForm", false, shrub_grade_to_sign, shrub_grade_to_exec ),
-																				target(target),
-																				is_signed(false)
+ShrubberyCreationForm::ShrubberyCreationForm( std::string const target ) :
+AForm( "ShrubberyCreationForm", false, SCHRUB_GRADE_TO_SIGN, SCHRUB_GRADE_TO_EXEC ),
+target( target )
 {
 	if (DEBUG)
 	{
@@ -40,9 +37,9 @@ ShrubberyCreationForm::ShrubberyCreationForm( std::string const target ) :		AFor
 	out_of_range_thrower( getName(), get_grade_to_sign(), get_grade_to_exec() );
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const & src ) :	AForm( "ShrubberyCreationForm", src.get_is_signed(), shrub_grade_to_sign, shrub_grade_to_exec ),
-																					target(src.getTarget()),
-																					is_signed(src.get_is_signed())
+ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const & src ) :
+AForm( "ShrubberyCreationForm", src.get_is_signed(), SCHRUB_GRADE_TO_SIGN, SCHRUB_GRADE_TO_EXEC ),
+target( src.getTarget() )
 {
 	if (DEBUG)
 	{
@@ -71,11 +68,12 @@ ShrubberyCreationForm &	ShrubberyCreationForm::operator=( ShrubberyCreationForm 
 {
 	if (DEBUG)
 		std::cout << "ShrubberyCreationForm assignement called" << std::endl;
-	is_signed = src.get_is_signed();
+	if ( this == &src )
+		return *this;
 	return *this;
 }
 
-std::ostream &	operator<<( std::ostream & outflow, ShrubberyCreationForm const & src )
+std::ostream &			operator<<( std::ostream & outflow, ShrubberyCreationForm const & src )
 {
 	if (DEBUG)
 		std::cout << "ShrubberyCreationForm outflow overload called" << std::endl;
@@ -127,13 +125,6 @@ void	ShrubberyCreationForm::action() const
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-
-std::string	ShrubberyCreationForm::getName() const
-{
-	if (DEBUG)
-		std::cout << "ShrubberyCreationForm getName called" << std::endl;
-	return name;
-}
 
 std::string	ShrubberyCreationForm::getTarget() const
 {

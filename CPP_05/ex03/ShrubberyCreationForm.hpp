@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 20:27:16 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/01 20:49:28 by marvin           ###   ########.fr       */
+/*   Updated: 2026/11/13 13:12:12 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
+
+# define SCHRUB_GRADE_TO_SIGN 145
+# define SCHRUB_GRADE_TO_EXEC 137
 
 # include "AForm.hpp"
 
@@ -27,7 +30,6 @@ class ShrubberyCreationForm : virtual public AForm
 
 		ShrubberyCreationForm &		operator=( ShrubberyCreationForm const & src );
 
-		std::string	getName() const;
 		std::string	getTarget() const;
 
 	protected:
@@ -36,11 +38,7 @@ class ShrubberyCreationForm : virtual public AForm
 
 	private:
 
-		const std::string			name;
 		const std::string			target;
-		bool						is_signed;
-		static const short			shrub_grade_to_sign = 145;
-		static const short			shrub_grade_to_exec = 137;
 
 };
 

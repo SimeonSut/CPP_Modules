@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:12 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/12 20:36:55 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/13 12:16:43 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(void)
 		{
 			std::cout << e.what() << "\n";
 		}
-		usleep(50000);
+		usleep(10000);
 		try
 		{
 			++Bob;

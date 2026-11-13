@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/13 12:28:43 by ssutarmi          #+#    #+#             */
+/*   Updated: 2026/11/13 12:28:44 by ssutarmi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Form.hpp"
 
 /*
@@ -16,10 +28,11 @@ grade_to_exec(grade_to_exec)
 	out_of_range_thrower( *this, grade_to_sign, grade_to_exec );
 }
 
-Form::Form( const Form & src ) :	name(src.getName()),
-									is_signed(false),
-									grade_to_sign(src.get_grade_to_sign()),
-									grade_to_exec(src.get_grade_to_exec())
+Form::Form( const Form & src ) :
+name(src.getName()),
+is_signed(false),
+grade_to_sign(src.get_grade_to_sign()),
+grade_to_exec(src.get_grade_to_exec())
 {
 	out_of_range_thrower( *this, grade_to_sign, grade_to_exec );
 }
@@ -111,7 +124,8 @@ short const &	Form::get_grade_to_exec() const
 
 //------------------------------------------HIGH-------------------------------------------------------
 
-Form::GradeTooHighException::GradeTooHighException( std::string const & Error ) : error_name(Error)
+Form::GradeTooHighException::GradeTooHighException( std::string const & Error ) :
+error_name(Error)
 {
 	if (DEBUG)
 	{
@@ -143,7 +157,8 @@ const char* Form::GradeTooHighException::what() const throw()
 
 //------------------------------------------LOW-------------------------------------------------------
 
-Form::GradeTooLowException::GradeTooLowException( std::string const & Error ) : error_name(Error)
+Form::GradeTooLowException::GradeTooLowException( std::string const & Error ) :
+error_name(Error)
 {
 	if (DEBUG)
 	{

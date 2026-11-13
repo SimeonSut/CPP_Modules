@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 20:27:16 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/12 21:01:46 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/13 12:47:54 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class ShrubberyCreationForm : virtual public AForm
 
 	protected:
 
-		void		action() const;
+		void		execute() const;
 
 	private:
 

@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:14 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/12 20:42:41 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/13 12:53:19 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ class Bureaucrat
 		Bureaucrat	&	operator--( void );
 		Bureaucrat		operator--( int );
 
-		void	out_of_range_thrower( Bureaucrat const & src, short grade );
-		void	signForm( AForm & toSign );
-		void	executeForm( AForm const & form );
+		void			out_of_range_thrower( Bureaucrat const & src, short grade );
+		void			signForm( AForm & toSign );
+		void			executeForm( AForm const & form );
 
-		short	getGrade() const;
+		short			getGrade() const;
 		virtual std::string const & getName() const;
 
 		class GradeTooHighException : public std::exception

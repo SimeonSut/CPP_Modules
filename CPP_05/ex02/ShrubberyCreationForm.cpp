@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 20:27:08 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/12 21:16:31 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/13 12:47:48 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ std::ostream &	operator<<( std::ostream & outflow, ShrubberyCreationForm const &
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	ShrubberyCreationForm::action() const
+void	ShrubberyCreationForm::execute() const
 {
 	std::string 	outname = target;
 	std::ofstream	outfile;

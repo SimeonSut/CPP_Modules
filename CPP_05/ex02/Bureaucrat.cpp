@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:15 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/12 20:52:39 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/13 12:54:57 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Bureaucrat::Bureaucrat() : grade(MINIMAL_GRADE), name("NoName")
+Bureaucrat::Bureaucrat() :
+grade(MINIMAL_GRADE),
+name("NoName")
 {
 	if (DEBUG)
 		std::cout << "Bureaucrat Constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat( std::string const & newName, short const & newGrade ) : name(newName)
+Bureaucrat::Bureaucrat( std::string const & newName, short const & newGrade ) :
+name(newName)
 {
 	if (DEBUG)
 		std::cout << "Bureaucrat Constructor with newGrade parameter called" << std::endl;
@@ -31,7 +34,9 @@ Bureaucrat::Bureaucrat( std::string const & newName, short const & newGrade ) : 
 	grade = newGrade;
 }
 
-Bureaucrat::Bureaucrat( const Bureaucrat & src ) : grade(src.getGrade()), name(src.getName())
+Bureaucrat::Bureaucrat( const Bureaucrat & src ) :
+grade(src.getGrade()),
+name(src.getName())
 {
 	if (DEBUG)
 		std::cout << "Bureaucrat Copy Constructor called" << std::endl;
@@ -150,7 +155,7 @@ void	Bureaucrat::executeForm( AForm const & form )
 {
 	try
 	{
-		form.execute( getName(), getGrade() );
+		form.check_exec_validity( getName(), getGrade() );
 	}
 	catch ( std::exception & e )
 	{
@@ -180,7 +185,8 @@ std::string const & Bureaucrat::getName() const
 
 //------------------------------------------HIGH-------------------------------------------------------
 
-Bureaucrat::GradeTooHighException::GradeTooHighException( std::string const & Error ) : error_name(Error)
+Bureaucrat::GradeTooHighException::GradeTooHighException( std::string const & Error ) :
+error_name(Error)
 {
 	if (DEBUG)
 	{
@@ -212,7 +218,8 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 
 //------------------------------------------LOW-------------------------------------------------------
 
-Bureaucrat::GradeTooLowException::GradeTooLowException( std::string const & Error ) : error_name(Error)
+Bureaucrat::GradeTooLowException::GradeTooLowException( std::string const & Error ) :
+error_name(Error)
 {
 	if (DEBUG)
 	{
