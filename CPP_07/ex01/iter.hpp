@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 20:21:52 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/11 15:19:58 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/13 18:57:01 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 #include <iostream>
 
-template <typename T, typename U> U param_func( T & src )
-{}
-
-template <typename T, typename U> void iter( T* adress, int len, U (*fptr)(T) )
+template <typename T> void param_func( T & src, T & add )
 {
-	for (void *result, int i = 0; i < len; i++)
-	{
-		result = param_func<T, U>( adress[i] );
-	}
+	src += add;
+}
+
+template <typename T> void iter( T* adress, int len, void(*fptr)(T) )
+{
+	for (int i = 0; i < len; i++)
+		*fptr(adress[i]);
 }
 
 #endif

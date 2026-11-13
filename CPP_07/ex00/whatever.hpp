@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 15:52:39 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/10 19:55:03 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/12 11:13:26 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 
-template <typename T> void swap( T & a, T & b )
+template <typename T, typename U> void swap( T & a, U & b )
 {
 	T	tmp;
 
