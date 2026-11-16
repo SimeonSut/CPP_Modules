@@ -6,12 +6,16 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 18:43:17 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/15 21:51:32 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/16 16:44:03 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
+
+#ifndef DEBUG
+#define DEBUG 0
+#endif
 
 # include <iostream>
 # include <string>
@@ -28,7 +32,7 @@ class Array
 		~Array();
 
 		Array&	operator=( Array const & src );
-		Array&	operator[]( unsigned int index ) const;
+		T&		operator[]( unsigned int index ) const;
 
 		unsigned int const & size() const;
 
