@@ -6,15 +6,21 @@ DEBUG_FLAGS = -D DEBUG=1
 
 SRC = main.cpp
 
+TEST_SRC = main.cpp
+
 HDR = easyfind.hpp
 
 NAME = test
 
 DEBUG_NAME = debug_test
 
+TEST_NAME = $(notdir$(shell pwd))
+
 all: $(NAME)
 
 debug : $(DEBUG_NAME)
+
+test : $(TEST_NAME)
 
 $(NAME): $(SRC) $(HDR)
 	@$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
@@ -22,16 +28,23 @@ $(NAME): $(SRC) $(HDR)
 $(DEBUG_NAME): $(SRC) $(HDR)
 	@$(CXX) $(CXXFLAGS) $(DEBUG_FLAGS) $(SRC) -o $(DEBUG_NAME)
 
+$(TEST_NAME) : $(TEST_SRC)
+	@$(CXX) $(CXXFLAGS) $(DEBUG_FLAGS) $(TEST_SRC) -o $(TEST_NAME)
+
 clean:
 	@rm -f $(NAME)
 	@rm -f $(DEBUG_NAME)
+	@rm -f $(TEST_NAME)
 
 fclean: clean
 	@rm -f $(NAME)
 	@rm -f $(DEBUG_NAME)
+	@rm -f $(TEST_NAME)
 
 re: fclean all
 
 redebug: fclean debug
 
-.PHONY: all debug clean fclean re redebug
+retest: fclean test
+
+.PHONY: all debug test clean fclean re redebug retest

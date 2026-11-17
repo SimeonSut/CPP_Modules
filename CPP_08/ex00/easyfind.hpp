@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 19:14:36 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/16 21:47:15 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/17 21:30:46 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 # include <iostream>
 # include <vector>
+# include <deque>
+# include <list>
 # include <algorithm>
 
 template <typename T>
-T const& easyfind( T first, int second );
+void easyfind( T first, int second );
 
 #include "easyfind.tpp"
 
