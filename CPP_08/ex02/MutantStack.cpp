@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 13:16:16 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/19 13:16:17 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/19 21:58:40 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ MutantStack::~MutantStack()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-MutantStack &				MutantStack::operator=( MutantStack const & rhs )
+MutantStack &				MutantStack::operator=( MutantStack const & src )
 {
 	//if ( this != &rhs )
 	//{
@@ -47,7 +47,7 @@ MutantStack &				MutantStack::operator=( MutantStack const & rhs )
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, MutantStack const & i )
+std::ostream &			operator<<( std::ostream & outstream, MutantStack const & src )
 {
 	//o << "Value = " << i.getValue();
 	return o;
