@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 22:00:30 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/18 17:03:41 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/19 16:03:21 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,20 @@ int main(void)
 
 	std::cout << "\n\n--------------multiple additions at once tests!--------------\n\n";
 
+	Span mass_sp = Span(100);
+	Span one_extra_span = Span(100);
+	
+	mass_sp.addRange(0, 99);
+	std::cout << mass_sp.shortestSpan() << std::endl;
+	std::cout << mass_sp.longestSpan() << std::endl;
+	std::cout << mass_sp << "\n";
+	try
+	{
+		one_extra_span.addRange(0, 100);
+	}
+	catch ( std::invalid_argument & inarg )
+	{
+		std::cout << inarg.what() << std::endl;
+	}
 	return 0;
 }

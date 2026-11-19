@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 22:02:18 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/18 16:53:08 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/19 16:04:45 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,16 @@ void Span::addNumber( int const & addition )
 	span_index++;
 }
 
+void Span::addRange( int const & range_start, int const & range_finish )
+{
+	int addition = range_start;
+
+	for ( ; span_index != span.end() && addition <= range_finish ;  span_index++, addition++ )
+		*span_index = addition;
+	if ( span_index == span.end() && addition <= range_finish )
+		throw std::invalid_argument("Span is spent and all elements form the range couldnt be added!");
+}
+
 unsigned long Span::shortestSpan()
 {
 	if ( span_index == span.begin() || getN() <= 1 )
@@ -127,15 +137,4 @@ std::list<int>::iterator Span::getStartIndex()
 	return span.begin();
 }
 
-/*
-void Span::setN( unsigned int const & newN )
-{
-	N = newN;
-}
-
-void Span::setSpan( std::list<int> const & src )
-{
-	span = src;
-}
-
- ************************************************************************** */
+/* ************************************************************************* */
