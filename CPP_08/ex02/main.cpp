@@ -6,9 +6,13 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 13:16:14 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/19 22:00:02 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/20 19:11:01 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef TESTFLAG
+#define TESTFLAG 0
+#endif
 
 #include "MutantStack.hpp"
 
@@ -28,7 +32,6 @@ int	main(void)
 	mstack.push(3);
 	mstack.push(5);
 	mstack.push(737);
-	//[...]
 	mstack.push(0);
 
 	MutantStack<int>::iterator it = mstack.begin();
