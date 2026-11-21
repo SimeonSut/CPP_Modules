@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:14 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/30 22:29:57 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/12 20:36:31 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # ifndef DEBUG
 # define DEBUG 0
 # endif
+
+# define MINIMAL_GRADE 150
+# define MAXIMAL_GRADE 1
 
 #include <iostream>
 # include <string>

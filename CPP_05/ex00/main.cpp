@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:12 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/30 21:40:11 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/13 12:16:43 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int	main(void)
 	try
 	{
 		Bureaucrat John("John", 0);
-		Bureaucrat Bob("Bob", 150);
+		Bureaucrat Bob("Bob", MINIMAL_GRADE);
 	}
 	catch ( std::exception & e )
 	{
 		std::cout << e.what() << "\n";
 	}
-	Bureaucrat John("John", 1);
-	Bureaucrat Bob("Bob", 150);
+	Bureaucrat John("John", MAXIMAL_GRADE);
+	Bureaucrat Bob("Bob", MINIMAL_GRADE);
 	for ( short i = 0; i < 155; i++ )
 	{
 		try
@@ -36,7 +36,7 @@ int	main(void)
 		{
 			std::cout << e.what() << "\n";
 		}
-		usleep(50000);
+		usleep(10000);
 		try
 		{
 			++Bob;

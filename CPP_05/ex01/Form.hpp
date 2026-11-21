@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/13 12:28:36 by ssutarmi          #+#    #+#             */
+/*   Updated: 2026/11/13 12:28:37 by ssutarmi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FORM_HPP
 # define FORM_HPP
 
@@ -9,7 +21,7 @@ class Form
 	public:
 
 		Form();
-		Form( std::string const & name, bool const & is_signed, short const & grade_to_sign, short const & grade_to_exec );
+		Form( std::string const & name, short const & grade_to_sign, short const & grade_to_exec );
 		Form( Form const & src );
 		~Form();
 

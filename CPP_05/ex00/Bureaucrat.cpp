@@ -6,7 +6,7 @@
 /*   By: ssutarmi <ssutarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 17:30:15 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/10/30 22:32:34 by ssutarmi         ###   ########.fr       */
+/*   Updated: 2026/11/12 20:37:56 by ssutarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Bureaucrat::Bureaucrat() : grade(1), name("NoName")
+Bureaucrat::Bureaucrat() : grade(MAXIMAL_GRADE), name("NoName")
 {
 	if (DEBUG)
 		std::cout << "Bureaucrat Constructor called" << std::endl;
