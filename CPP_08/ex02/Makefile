@@ -6,17 +6,17 @@ DEBUG_FLAGS = -D DEBUG=1
 
 TEST_FLAGS = -D TESTFLAG=1
 
-SRC = main.cpp MutantStack.cpp
+SRC = main.cpp
 
-TEST_SRC = main.cpp
+TEST_SRC = main.cpp 
 
 HDR = MutantStack.hpp
 
-NAME = $(notdir$(shell pwd))
+NAME = Test
 
 DEBUG_NAME = debug_test
 
-TEST_NAME = Test
+TEST_NAME = $(notdir$(shell pwd))
 
 all: $(NAME)
 
