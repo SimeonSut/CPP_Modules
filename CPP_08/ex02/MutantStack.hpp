@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 13:16:18 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/23 00:01:25 by marvin           ###   ########.fr       */
+/*   Updated: 2026/11/23 20:53:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <iostream>
 # include <string>
 # include <stack>
+# include <list>
 
 template <typename T, typename Container = std::deque<T> >
 class MutantStack : public std::stack<T, Container>

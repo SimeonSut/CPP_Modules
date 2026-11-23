@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 13:16:16 by ssutarmi          #+#    #+#             */
-/*   Updated: 2026/11/23 00:04:26 by marvin           ###   ########.fr       */
+/*   Updated: 2026/11/23 21:04:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ MutantStack<T, Container>::MutantStack()
 template <typename T, typename Container>
 MutantStack<T, Container>::MutantStack( const MutantStack & src )
 {
-	typename Container::iterator	it = src.begin();
+	iterator	it = src.begin();
 
 	while ( it != src.end() )
 	{
@@ -65,14 +65,14 @@ MutantStack<T, Container> &	 MutantStack<T, Container>::operator=( MutantStack c
 template <typename T, typename Container>
 typename MutantStack<T, Container>::iterator	MutantStack<T, Container>::begin()
 {
-	return iterator();
+	return this->c.begin();
 }
 
 //TESTS ONGOING!
 template <typename T, typename Container>
 typename MutantStack<T, Container>::iterator	MutantStack<T, Container>::end()
 {
-	return iterator();
+	return this->c.end();
 }
 
 /*
