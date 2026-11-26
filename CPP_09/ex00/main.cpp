@@ -20,5 +20,6 @@ int	main(int argc, char **argv)
 		return 1;
 	}
 	BitcoinExchange	test(argv[1]);
+	test.Bitcoin_Conversion();
 	return 0;
 }
